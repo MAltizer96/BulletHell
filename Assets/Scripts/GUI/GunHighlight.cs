@@ -31,18 +31,12 @@ public class GunHighlight : MonoBehaviour
 
     public void HighlightGun(int gunIndex)
     {
-        for (int i = 0; i < gunImages.Count; i++)
+        foreach (var g in gunImages)
         {
-            if (i == gunIndex)
-            {
-                gunImages[i].color = Color.yellow; // Highlight the selected gun
-            }
-            else
-            {
-                gunImages[i].color = Color.white; // Reset color for other guns
-            }
+            g.gameObject.SetActive(false); // Hide all gun images
         }
 
+        gunImages[gunIndex].gameObject.SetActive(true); // Show the selected gun image
     }
 
     public void HandleGunChanged(Gun newGun)
