@@ -1,0 +1,16 @@
+{
+    "name": "GunAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fd076cfad02c3254aabf1874ef3ecf66"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

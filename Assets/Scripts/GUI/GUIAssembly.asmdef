@@ -1,0 +1,17 @@
+{
+    "name": "GUIAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fb17ccd3c1f5ba84ab83e4e9f81ebcca",
+        "GUID:2aa9dd2ea9a70524781a0dca9f7506c3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

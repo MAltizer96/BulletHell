@@ -1,0 +1,2 @@
+--Naming--
+FileName = PascalCase
