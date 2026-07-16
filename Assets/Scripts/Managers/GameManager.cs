@@ -2,15 +2,36 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [SerializeField] 
+    private GameObject player;
+
+    private PlayerMovement playerMovement;
+    private PlayerShoot PlayerShoot;
+
+
+    private void Awake()
+    {
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+            PlayerShoot = player.GetComponent<PlayerShoot>();
+        }
+        else
+        {
+            Debug.LogError("Player GameObject is not assigned in the GameManager.");
+        }
+    }
+    public void StopPlayerInteraction()
     {
         
+        // Implement logic to stop player interaction
+        Debug.Log("Player interaction stopped.");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResumePlayerInteraction()
     {
-        
+        // Implement logic to resume player interaction
+        Debug.Log("Player interaction resumed.");
     }
 }
