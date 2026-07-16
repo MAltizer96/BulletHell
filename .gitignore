@@ -5,4 +5,10 @@ UserSettings/
 Build/
 .vs/
 .VS
-obj/Debug
+obj/
+*.csproj
+*.sln
+*.pidb
+*.suo
+*.user
+*.userprefs
