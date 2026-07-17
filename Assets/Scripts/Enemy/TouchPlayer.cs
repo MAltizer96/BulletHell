@@ -10,9 +10,9 @@ public class TouchPlayer : MonoBehaviour
     float baseHitCooldown; // Cooldown duration in seconds
     float hitCooldown; // Current cooldown timer
 
+    PlayerMovement playerMovement;
     BoxCollider2D boxCollider;
     GameObject playerGameObject;
-
     bool hitPlayer = false; // Flag to track if the player has been hit
     private void Awake()
     {
@@ -22,6 +22,8 @@ public class TouchPlayer : MonoBehaviour
             Debug.LogError("BoxCollider2D component is missing on " + gameObject.name);
         }
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        playerMovement = playerGameObject.GetComponent<PlayerMovement>();
+        hitCooldown = baseHitCooldown; // Initialize cooldown timer
     }
 
     private void Update()
@@ -62,7 +64,7 @@ public class TouchPlayer : MonoBehaviour
     private IEnumerator StopPlayerMovement()
     {
         // Disable player movement
-        var playerMovement = playerGameObject.GetComponent<PlayerMovement>();
+
         if (playerMovement != null)
         {
             playerMovement.enabled = false;
