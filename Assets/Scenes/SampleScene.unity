@@ -3726,7 +3726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::TouchPlayer
   knockbackForce: 5
-  baseHitCooldown: 0.1
+  baseHitCooldown: 0.25
 --- !u!1 &807837292
 GameObject:
   m_ObjectHideFlags: 0
