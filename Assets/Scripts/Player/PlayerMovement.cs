@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Store the Vector2 (e.g., (1, 0) for Right, (0, 0) for None)
         movementInput = value.Get<Vector2>();
-        Debug.Log("Input Updated: " + movementInput);
+        //Debug.Log("Input Updated: " + movementInput);
     }
     private void FixedUpdate()
     {
