@@ -3473,12 +3473,13 @@ GameObject:
   m_Component:
   - component: {fileID: 677838014}
   - component: {fileID: 677838013}
+  - component: {fileID: 677838018}
+  - component: {fileID: 677838020}
   - component: {fileID: 677838017}
   - component: {fileID: 677838019}
   - component: {fileID: 677838015}
-  - component: {fileID: 677838018}
-  - component: {fileID: 677838020}
   - component: {fileID: 677838021}
+  - component: {fileID: 677838022}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -3626,7 +3627,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &677838019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3686,7 +3687,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -3714,7 +3715,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1db8ddcea439a438b7e65915fe778a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
-  aiLerp: {fileID: 0}
+  aiLerp: {fileID: 677838019}
+--- !u!114 &677838022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677838010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85262ba7bb287247a67eb0475d79a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EnemyAssembly::TouchPlayer
 --- !u!1 &807837292
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,17 +4415,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      insertIndex: 5
+      insertIndex: 2
+      addedObject: {fileID: 277243315}
+    - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 277243316}
+    - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
+      insertIndex: 7
       addedObject: {fileID: 277243319}
     - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 277243317}
-    - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 277243315}
-    - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 277243316}
     - targetCorrespondingSourceObject: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 277243320}
