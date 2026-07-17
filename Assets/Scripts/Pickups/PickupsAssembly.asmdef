@@ -1,0 +1,16 @@
+{
+    "name": "PickupsAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:475e8d4b15cdb364693c9c3f5bb42e98"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
