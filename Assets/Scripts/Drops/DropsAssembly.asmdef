@@ -1,0 +1,16 @@
+{
+    "name": "DropsAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:177b2b0acdc67b5498ff311b5430dfc4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
