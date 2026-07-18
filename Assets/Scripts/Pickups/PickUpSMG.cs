@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class DropSMG : MonoBehaviour
+public class PickUpSMG : MonoBehaviour
 {
+    [SerializeField]
+    float timerWithGun;
+    
     private MachineGun SMGgun;
     private TrackGuns trackGuns;
 
@@ -18,6 +21,7 @@ public class DropSMG : MonoBehaviour
         {
             Debug.Log("Player entered the trigger zone.");
             trackGuns.CurrentGun = SMGgun;
+            Destroy(gameObject);
         }
     }
 }
