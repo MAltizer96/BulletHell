@@ -4,23 +4,40 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, iDamageable
 {
-    int health;
+    float health;
+    [SerializeField]
     float maxHealth;
+    [SerializeField]
     float speed;
     GameObject target;
-    
+
+    private EnemyHealthDisplay healthSlider;
+
     Rigidbody2D rb;
     public AILerp aiLerp;
-    public int Health { get => health; set => health = value; }
+    public float Health { get => health; set => health = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
     public float Speed { get => speed; set => speed = value; }
     public GameObject Target { get => target; set => target = value; }
 
+    private void Awake()
+    {
+        MaxHealth = maxHealth;
+        Health = MaxHealth;        
+        Speed = speed;
+        
+
+    }
+
     private void Start()
     {
+        healthSlider = GetComponent<EnemyHealthDisplay>();
         rb = GetComponent<Rigidbody2D>();
         aiLerp = GetComponent<AILerp>();
         //Target = GameObject.FindGameObjectWithTag("Player");
+
+        healthSlider.setMaxFill(MaxHealth);
+        healthSlider.updateSlider(Health);
     }
 
     public void KnockBack(Vector2 direction, float force)
@@ -44,9 +61,10 @@ public abstract class Enemy : MonoBehaviour, iDamageable
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        if (Health <= 0)
+        healthSlider.updateSlider(Health);
+        if (Health < 1)
         {
-            //Dead();
+            Dead();
         }
         //implement knockback here
     }
