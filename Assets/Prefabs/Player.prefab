@@ -10,13 +10,18 @@ GameObject:
   m_Component:
   - component: {fileID: 5826115159310166087}
   - component: {fileID: 3656334445733451562}
+  - component: {fileID: 6464575860441002370}
+  - component: {fileID: 8343040091382389292}
   - component: {fileID: 7858520484142267912}
   - component: {fileID: 227529909665842339}
   - component: {fileID: 4926778780994315404}
+  - component: {fileID: 7972020455273154730}
   - component: {fileID: 8735139470965468489}
+  - component: {fileID: 7114159366703285697}
+  - component: {fileID: 1977783655085610269}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 1604950843396174043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.04565, y: 2.40772, z: 0}
+  m_LocalPosition: {x: 4.03, y: -1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,6 +100,69 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!58 &6464575860441002370
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604950843396174043}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!50 &8343040091382389292
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604950843396174043}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &7858520484142267912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: PlayerAssembly::PlayerShoot
   Bullet: {fileID: 6544206571364484876, guid: 683b7642167b9ac47934df82411b8b3c, type: 3}
---- !u!114 &8735139470965468489
+  trackGuns: {fileID: 0}
+--- !u!114 &7972020455273154730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,6 +245,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 1604950843396174043}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b81b33147f3d7749bec3f2d56ba8e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PlayerAssembly::TrackGuns
+  allGuns: []
+--- !u!114 &8735139470965468489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604950843396174043}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5965776cdf1a7de43b9cf0081ca8d546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GunAssembly::BaseGun
+  canShoot: 1
+  shootCooldown: 1
+  baseCooldown: 0.5
+  bulletSpeed: 10
+  knockBack: 5
+  bulletDamage: 1
+--- !u!114 &7114159366703285697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604950843396174043}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdbbc3754c97af4ea8983e845431a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GunAssembly::MachineGun
+  canShoot: 1
+  shootCooldown: 0
+  baseCooldown: 0.25
+  bulletSpeed: 10
+  knockBack: 1
+  bulletDamage: 1
+--- !u!114 &1977783655085610269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604950843396174043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed5c4283011fde46ae32ea65e8492fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PlayerAssembly::Health
+  healthIcons: []
+  maxHealth: 0
