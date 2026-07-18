@@ -87,7 +87,6 @@ public class TrackGuns : MonoBehaviour
         }
 
         CurrentGun = gun;
-        Debug.Log("Current Gun Timer: " + CurrentGun.timerForGun);
         StartCoroutine(StartNewGun(CurrentGun.timerForGun));
     }
 
