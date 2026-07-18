@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -86,6 +87,31 @@ public class TrackGuns : MonoBehaviour
         }
 
         CurrentGun = gun;
+        Debug.Log("Current Gun Timer: " + CurrentGun.timerForGun);
+        StartCoroutine(StartNewGun(CurrentGun.timerForGun));
     }
 
+    public IEnumerator StartNewGun(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ResetToBaseGun();
+    }
+
+    public void ResetToBaseGun()
+    {
+        Gun baseGun = gameObject.GetComponent<BaseGun>();
+        if (baseGun == this)
+        {
+            return;
+        }
+        else
+        {
+            this.enabled = false; // Disable the current gun script
+            if (baseGun == null)
+            {
+                gameObject.AddComponent<BaseGun>();
+            }
+            CurrentGun = baseGun;
+        }
+    }
 }
