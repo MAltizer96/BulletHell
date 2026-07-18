@@ -13,12 +13,7 @@ public abstract class Gun : MonoBehaviour, iGun
     public float bulletSpeed = 10f;
     private bool automatic = false;
     public float knockBack = 5f;
-    public int bulletDamage = 10;
-
-
-
-
-
+    public int bulletDamage = 1;
 
     public bool CanShoot { get => canShoot; set => canShoot = value; }
     public float ShootCooldown { get => shootCooldown; set => shootCooldown = value; }
