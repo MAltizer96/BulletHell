@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface iDamageable
 {
-    int Health { get; set; }
+    float Health { get; set; }
     float MaxHealth { get; set; }
     float Speed { get; set; }
     GameObject Target { get; set; }
