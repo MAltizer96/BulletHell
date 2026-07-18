@@ -709,7 +709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &484950795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -726,8 +726,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.037, y: 0.171}
   m_AnchorMax: {x: 0.076259114, y: 0.8134918}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 9.720184, y: 0}
+  m_SizeDelta: {x: 19.4403, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484950796
 MonoBehaviour:
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6945232936829791594, guid: 03958209a57729e468efd15ab2371be5, type: 3}
+  m_Sprite: {fileID: 957726272920451130, guid: 72d074b4e2e7ac546b3bbf3ac542af3c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3761,8 +3761,8 @@ Transform:
   m_GameObject: {fileID: 1132408757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.95, y: -0.34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.6, y: 0.33, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3801,11 +3801,11 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.103118956, y: 0.5031215}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51724136, y: -0.3529412}
-    oldSize: {x: 0.90625, y: 0.53125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4375, y: 0.375}
     newSize: {x: 0.90625, y: 0.53125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3862,7 +3862,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6945232936829791594, guid: 03958209a57729e468efd15ab2371be5, type: 3}
+  m_Sprite: {fileID: 957726272920451130, guid: 72d074b4e2e7ac546b3bbf3ac542af3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4172,6 +4172,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7114159366703285697, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
+      propertyPath: timerForGun
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7858520484142267912, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4198,7 +4202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1345969515
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4215,8 +4219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.037, y: 0.171}
   m_AnchorMax: {x: 0.076259114, y: 0.8134918}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 9.720184, y: 0}
+  m_SizeDelta: {x: 19.4403, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1345969516
 MonoBehaviour:
@@ -4238,7 +4242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4540766786112039020, guid: f513401ec4c33bd45a12200a6d87ac34, type: 3}
+  m_Sprite: {fileID: -6433012304825356384, guid: 2b7410c19ec99b84dafb043a044ba9d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4475,7 +4479,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.4
+  m_fontSize: 12.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4990,15 +4994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1522992813847896049, guid: 59774a83dfe0c7c41ad57fcf76c1f57b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1524061304790092573, guid: 59774a83dfe0c7c41ad57fcf76c1f57b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1524061304790092573, guid: 59774a83dfe0c7c41ad57fcf76c1f57b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1524061304790092573, guid: 59774a83dfe0c7c41ad57fcf76c1f57b, type: 3}
       propertyPath: m_SizeDelta.x
