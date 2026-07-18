@@ -6,14 +6,18 @@ public abstract class Gun : MonoBehaviour, iGun
 
     [SerializeField]
     private bool canShoot = true;
+    private bool automatic = false;
 
     public float shootCooldown;
     public float baseCooldown = .5f;
 
     public float bulletSpeed = 10f;
-    private bool automatic = false;
     public float knockBack = 5f;
     public int bulletDamage = 1;
+
+    public float timerForGun = 10;
+
+
 
     public bool CanShoot { get => canShoot; set => canShoot = value; }
     public float ShootCooldown { get => shootCooldown; set => shootCooldown = value; }
