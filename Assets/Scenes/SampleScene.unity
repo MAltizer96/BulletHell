@@ -3884,6 +3884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef592d21221ebff42a87f866016fba2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PickupsAssembly::DropSMG
+  timerWithGun: 0
 --- !u!1 &1149574383
 GameObject:
   m_ObjectHideFlags: 0
