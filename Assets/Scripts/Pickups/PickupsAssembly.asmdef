@@ -2,7 +2,9 @@
     "name": "PickupsAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:475e8d4b15cdb364693c9c3f5bb42e98"
+        "GUID:475e8d4b15cdb364693c9c3f5bb42e98",
+        "GUID:2aa9dd2ea9a70524781a0dca9f7506c3",
+        "GUID:fb17ccd3c1f5ba84ab83e4e9f81ebcca"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
