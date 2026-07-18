@@ -32,7 +32,7 @@ public class BaseGun : Gun
             Vector2 playerVelocity = Vector2.zero;
             playerVelocity = playerRb.linearVelocity;
             Vector2 bulletVelocity = direction * BulletSpeed;
-            bulletRb.linearVelocity = bulletVelocity - playerVelocity;
+            bulletRb.linearVelocity = bulletVelocity;
             //rb.linearVelocity = direction * BulletSpeed;
         }
         int timer = 5;

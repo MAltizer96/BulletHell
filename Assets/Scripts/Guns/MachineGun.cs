@@ -38,8 +38,7 @@ public class MachineGun : Gun
 
             bulletRb.interpolation = RigidbodyInterpolation2D.Interpolate;
             bulletRb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            bulletRb.linearVelocity = bulletVelocity + playerVelocity;
-            //rb.linearVelocity = direction * BulletSpeed;
+            bulletRb.linearVelocity = bulletVelocity;
         }
         int timer = 5;
         CanShoot = false;
