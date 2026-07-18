@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TrackGuns : MonoBehaviour
 {
-    // need to update this class to select the gun that the playyer is using and update all other instance to represent based off this class
-
     private Gun currentGun;
     public List<Gun> allGuns;
 
@@ -13,11 +11,13 @@ public class TrackGuns : MonoBehaviour
     public Gun CurrentGun
     {
         get => currentGun;
-        private set
+        set
         {
             if (currentGun == value) return;
             currentGun = value;
             OnGunChanged?.Invoke(currentGun);
+            SetCurrentGun(currentGun);
+
         }
     }
 
@@ -63,7 +63,7 @@ public class TrackGuns : MonoBehaviour
             enabledGun = allGuns[0];
             enabledGun.enabled = true; // Ensure the enabled gun is active
 
-        Debug.Log("Endabled Gun: "+ enabledGun);
+        //Debug.Log("Endabled Gun: "+ enabledGun);
         if (enabledGun != null)
             SetCurrentGun(enabledGun);
     }
