@@ -1,13 +1,23 @@
 using UnityEngine;
 
 public class DropSMG : MonoBehaviour
-{ 
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        { 
+{
+    private MachineGun SMGgun;
+    private TrackGuns trackGuns;
 
+    private void Awake()
+    {
+        SMGgun = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<MachineGun>();
+        trackGuns = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<TrackGuns>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player entered the trigger zone.");
+            trackGuns.CurrentGun = SMGgun;
         }
     }
 }
