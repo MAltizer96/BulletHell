@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     private SpawnManager spawnManager;
 
+    private PauseManager pauseManager;
+
     void OnEnable()
     {
         PlayerHealth.OnPlayerDied += HandlePlayerDied;
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
     {
         timerText = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
+        pauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
     }
     private void Update()
     {
@@ -34,13 +38,8 @@ public class GameManager : MonoBehaviour
     void HandlePlayerDied(PlayerHealth player)
     {
         Debug.Log("Player has died. Game Over!");
-        // Implement game over logic here, such as showing a game over screen or restarting the level.
 
-        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false; // Disable player movement
-            spawnManager.SpawnEnemies = false; // Stop spawning enemies
-        }
+        pauseManager.PlayerDies(); // Pause the game
+        spawnManager.SpawnEnemies = false; // Stop spawning enemies
     }
 }
