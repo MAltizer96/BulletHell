@@ -172,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: -2.4999976, y: 0}
+  m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8160813064984437512
 CanvasRenderer:
@@ -467,8 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1db8ddcea439a438b7e65915fe778a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
-  maxHealth: 10
-  speed: 0
+  maxHealth: 2
+  speed: 1
   aiLerp: {fileID: 6719547722366032611}
 --- !u!114 &8281251983597967449
 MonoBehaviour:
