@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: PickupsAssembly::DropSMG
   timerWithGun: 25
+  timerUntileGunDisappear: 5
