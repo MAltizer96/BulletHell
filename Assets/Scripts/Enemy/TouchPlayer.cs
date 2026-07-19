@@ -50,13 +50,24 @@ public class TouchPlayer : MonoBehaviour
             Vector2 knockDirection = (collision.transform.position - transform.position).normalized;
 
             var rb = collision.GetComponent<Rigidbody2D>();
+
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(); // Assuming the damage amount is 1
+                //Debug.Log("Player took damage. Current health: " + playerHealth.CurrentHealth);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerHealth component not found on the player.");
+            }
             StartCoroutine(StopPlayerMovement());
             if (rb != null)
             {
                 // Use impulse so it feels like a single knock
                 rb.linearVelocity = Vector2.zero; // clear existing momentum first
                 rb.AddForce(knockDirection * knockbackForce, ForceMode2D.Impulse);
-                Debug.Log("Knockback applied to player with force: " + knockDirection * knockbackForce);
+                //Debug.Log("Knockback applied to player with force: " + knockDirection * knockbackForce);
             }
         }
     }
