@@ -1,9 +1,13 @@
 using Pathfinding;
+using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public abstract class Enemy : MonoBehaviour, iDamageable
 {
+    public static event Action<Enemy> OnEnemyDied;
+
     float health;
     [SerializeField]
     float maxHealth;
@@ -70,6 +74,7 @@ public abstract class Enemy : MonoBehaviour, iDamageable
     }
     public void Dead()
     {
+        OnEnemyDied?.Invoke(this);
         Destroy(gameObject);
     }
 }
