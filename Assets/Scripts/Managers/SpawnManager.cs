@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
         if (spawnTimer <= 0f && maxEnemies >= enemies.Count && SpawnEnemies)
         {
             GameObject enemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
-            Debug.Log("Spawning enemy: " + enemy.name);
+            //Debug.Log("Spawning enemy: " + enemy.name);
             SpawnEnemy(enemy);
             spawnTimer = Random.Range(3f, 5f);
         }
