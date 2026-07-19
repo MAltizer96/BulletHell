@@ -10,7 +10,7 @@ public class BaseGun : Gun
     public override void Shoot(Vector2 playerPos, GameObject Bullet, Vector2 MousePos)
     {
         if (!CanShoot) {
-            Debug.Log("Gun is on cooldown. Please wait.");
+            //Debug.Log("Gun is on cooldown. Please wait.");
             return;
         }
         // Calculate direction from firePoint to mouse
