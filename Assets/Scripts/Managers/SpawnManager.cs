@@ -50,17 +50,12 @@ public class SpawnManager : MonoBehaviour
         int spawnIndex = Random.Range(1, spawnPoints.Length);
         enemy = Instantiate(enemy, spawnPoints[spawnIndex].position, Quaternion.identity);
         enemies.Add(enemy);
+        GameObject enemiesParent = GameObject.Find("Enemies");
+        enemy.transform.parent = enemiesParent.transform;
     }
 
     void UpdateEnemies(Enemy enemy)
     {
-        for (int i = enemies.Count - 1; i >= 0; i--)
-        {
-            if (enemies[i] == null)
-            {
-                enemies.RemoveAt(i);
-                break; // remove only the first null found
-            }
-        }
+        enemies.Remove(enemy.gameObject);
     }
 }
