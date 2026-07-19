@@ -12,6 +12,11 @@ public class SpawnManager : MonoBehaviour
 
     Transform[] spawnPoints;
     List<GameObject> enemies = new List<GameObject>();
+
+    bool spawnEnemies = true;
+
+    public bool SpawnEnemies { get => spawnEnemies; set => spawnEnemies = value; }
+
     void OnEnable()
     {
         Enemy.OnEnemyDied += UpdateEnemies;
@@ -31,7 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (spawnTimer <= 0f && maxEnemies >= enemies.Count)
+        if (spawnTimer <= 0f && maxEnemies >= enemies.Count && SpawnEnemies)
         {
             GameObject enemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
             Debug.Log("Spawning enemy: " + enemy.name);
@@ -41,7 +46,7 @@ public class SpawnManager : MonoBehaviour
         else
         {
             //Debug.Log(maxEnemies <= enemies.Count);
-            Debug.Log("Total Enemies right now: " + enemies.Count);
+            //Debug.Log("Total Enemies right now: " + enemies.Count);
             spawnTimer -= Time.deltaTime;
         }
     }
