@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
   maxHealth: 2
-  speed: 1
+  speed: 2
   aiLerp: {fileID: 6719547722366032611}
 --- !u!114 &8281251983597967449
 MonoBehaviour:
