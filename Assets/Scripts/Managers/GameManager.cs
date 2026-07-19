@@ -1,37 +1,19 @@
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
+    private float playedTimer = 0f;
 
-    [SerializeField] 
-    private GameObject player;
-
-    private PlayerMovement playerMovement;
-    private PlayerShoot PlayerShoot;
-
+    private TextMeshProUGUI timerText;
 
     private void Awake()
     {
-        if (player != null)
-        {
-            playerMovement = player.GetComponent<PlayerMovement>();
-            PlayerShoot = player.GetComponent<PlayerShoot>();
-        }
-        else
-        {
-            Debug.LogError("Player GameObject is not assigned in the GameManager.");
-        }
+        timerText = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
     }
-    public void StopPlayerInteraction()
+    private void Update()
     {
-        
-        // Implement logic to stop player interaction
-        Debug.Log("Player interaction stopped.");
-    }
+        playedTimer += Time.deltaTime;
+        timerText.text = "Time Played: " + Mathf.FloorToInt(playedTimer).ToString() + " seconds";
 
-    public void ResumePlayerInteraction()
-    {
-        // Implement logic to resume player interaction
-        Debug.Log("Player interaction resumed.");
     }
 }
