@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "PlayerAssembly",
-        "EnemyAssembly"
+        "EnemyAssembly",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
