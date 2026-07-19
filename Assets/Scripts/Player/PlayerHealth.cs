@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] healthIcons; // Array of health icon GameObjects
-
+    public static event Action<PlayerHealth> OnPlayerDied;
     [SerializeField]
     private int maxHealth;
     private int currentHealth;
@@ -50,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
     {
         // Handle player death logic here
         Debug.Log("Player has died.");
+        OnPlayerDied?.Invoke(this);
     }
 
 }
