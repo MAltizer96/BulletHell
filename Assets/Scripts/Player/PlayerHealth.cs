@@ -10,20 +10,22 @@ public class PlayerHealth : MonoBehaviour
     private int maxHealth;
     private int currentHealth;
 
+    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+
     private void Awake()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = maxHealth;
         UpdateHealthIcons();
     }
-    public void TakeDmg()
+    public void TakeDamage()
     {
 
-        if (currentHealth > 0)
+        if (CurrentHealth > 0)
         {
-            currentHealth--;
+            CurrentHealth--;
             UpdateHealthIcons();
         }
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             // Handle player death here
             Die();
@@ -33,9 +35,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal()
     {
-        if (currentHealth < maxHealth)
+        if (CurrentHealth < maxHealth)
         {
-            currentHealth++;
+            CurrentHealth++;
             UpdateHealthIcons();
         }
     }
@@ -43,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     {
         for (int i = 0; i < healthIcons.Length; i++)
         {
-            healthIcons[i].SetActive(i < currentHealth);
+            healthIcons[i].SetActive(i < CurrentHealth);
         }
     }
 
