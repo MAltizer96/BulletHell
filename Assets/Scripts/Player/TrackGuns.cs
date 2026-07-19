@@ -9,6 +9,8 @@ public class TrackGuns : MonoBehaviour
     public List<Gun> allGuns;
 
     public event Action<Gun> OnGunChanged;
+
+    Coroutine gunTimerRoutine;
     public Gun CurrentGun
     {
         get => currentGun;
@@ -72,6 +74,7 @@ public class TrackGuns : MonoBehaviour
     public void SetCurrentGun(int index)
     {
         if (index < 0 || index >= allGuns.Count) return;
+
         SetCurrentGun(allGuns[index]);
     }
 
@@ -86,14 +89,31 @@ public class TrackGuns : MonoBehaviour
             if (mb != null) mb.enabled = (g == gun);
         }
 
+        if (gun.GetType().Name == "BaseGun")
+        {
+            if (gunTimerRoutine != null)
+            {
+                StopCoroutine(gunTimerRoutine);
+                gunTimerRoutine = null;
+                currentGun = gun; // Set the current gun to BaseGun
+                return;
+            }
+        }
         CurrentGun = gun;
-        StartCoroutine(StartNewGun(CurrentGun.timerForGun));
+        if (gunTimerRoutine != null)
+        {
+            StopCoroutine(gunTimerRoutine);
+        }
+        gunTimerRoutine = StartCoroutine(StartNewGun(CurrentGun.timerForGun));
     }
 
     public IEnumerator StartNewGun(float time)
     {
+        Debug.Log("Starting new gun timer for: " + CurrentGun.GetType().Name + " for " + time + " seconds.");
         yield return new WaitForSeconds(time);
+        Debug.Log("Gun timer ended for: " + CurrentGun.GetType().Name + ". Resetting to base gun.");
         ResetToBaseGun();
+        gunTimerRoutine = null;
     }
 
     public void ResetToBaseGun()
