@@ -2,7 +2,8 @@
     "name": "ManagerAssembly",
     "rootNamespace": "",
     "references": [
-        "PlayerAssembly"
+        "PlayerAssembly",
+        "EnemyAssembly"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
