@@ -37,7 +37,7 @@ public class DropManager : MonoBehaviour
         else
         {
             Debug.Log("No pickup dropped.");
-            gunDropChance += 0.05f; // Increase the chance for the next drop
+            gunDropChance += 0.01f; // Increase the chance for the next drop
         }
 
         if (Random.value <= healthDropChance)
