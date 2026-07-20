@@ -20,10 +20,10 @@ public class PickUpSMG : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        // need to fix pick up after gun type is already equip
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered the trigger zone.");
+            //Debug.Log("Player entered the trigger zone.");
             trackGuns.CurrentGun = SMGgun;
             Destroy(gameObject);
         }
