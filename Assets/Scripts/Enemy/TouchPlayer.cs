@@ -28,8 +28,6 @@ public class TouchPlayer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {                 
             Debug.Log(gameObject.name + " Touched Player");   
-            hitPlayer = true;
-
             Vector2 knockDirection = (collision.transform.position - transform.position).normalized;
 
             var rb = collision.GetComponent<Rigidbody2D>();
