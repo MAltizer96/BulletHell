@@ -6,14 +6,11 @@ public class TouchPlayer : MonoBehaviour
 
     [SerializeField]
     private float knockbackForce;
-    [SerializeField]
-    float baseHitCooldown; // Cooldown duration in seconds
-    float hitCooldown; // Current cooldown timer
 
     PlayerMovement playerMovement;
     BoxCollider2D boxCollider;
     GameObject playerGameObject;
-    bool hitPlayer = false; // Flag to track if the player has been hit
+    
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -23,26 +20,12 @@ public class TouchPlayer : MonoBehaviour
         }
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerMovement = playerGameObject.GetComponent<PlayerMovement>();
-        hitCooldown = baseHitCooldown; // Initialize cooldown timer
-    }
-
-    private void Update()
-    {
-        if (hitPlayer)
-        {
-            hitCooldown -= Time.deltaTime;
-            if (hitCooldown <= 0f)
-            {
-                hitPlayer = false;
-                hitCooldown = baseHitCooldown; 
-            }
-        }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !hitPlayer)
+        if (collision.CompareTag("Player"))
         {                 
             Debug.Log(gameObject.name + " Touched Player");   
             hitPlayer = true;
@@ -51,47 +34,14 @@ public class TouchPlayer : MonoBehaviour
 
             var rb = collision.GetComponent<Rigidbody2D>();
 
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(); // Assuming the damage amount is 1
-                //Debug.Log("Player took damage. Current health: " + playerHealth.CurrentHealth);
-            }
-            else
-            {
-                Debug.LogWarning("PlayerHealth component not found on the player.");
-            }
-            StartCoroutine(StopPlayerMovement());
             if (rb != null)
             {
-                // Use impulse so it feels like a single knock
-                rb.linearVelocity = Vector2.zero; // clear existing momentum first
-                rb.AddForce(knockDirection * knockbackForce, ForceMode2D.Impulse);
-                //Debug.Log("Knockback applied to player with force: " + knockDirection * knockbackForce);
+                Vector2 direction = knockDirection * knockbackForce;
+                playerMovement.knockBack(direction);
             }
         }
     }
 
-    private IEnumerator StopPlayerMovement()
-    {
-        // Disable player movement
 
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;
-            Debug.Log("Player movement disabled.");
-        }
-        // Wait for a short duration
-        yield return new WaitForSeconds(hitCooldown);
-        // Re-enable player movement
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = true;
-            Debug.Log("Player movement re-enabled.");
-        }
-
-   
-
-    }
 
 }

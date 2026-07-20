@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInput;
     private Rigidbody2D rb;
 
+    bool beingKnockedback = false;
+    [SerializeField]
+    float baseKnockBackCooldown; // Cooldown duration in seconds
+    float knockBackCooldown; // Current cooldown timer
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,11 +27,47 @@ public class PlayerMovement : MonoBehaviour
         movementInput = value.Get<Vector2>();
         //Debug.Log("Input Updated: " + movementInput);
     }
+
+    private void Update()
+    {
+        if (knockBackCooldown > 0)
+        {
+            knockBackCooldown -= Time.deltaTime;
+        }
+        if (knockBackCooldown <= 0)
+        {
+            beingKnockedback = false;
+
+        }
+    }
     private void FixedUpdate()
     {
+        if(beingKnockedback)
+        {
+            return;
+        }
         Vector2 moveDirection = new Vector3(movementInput.x, movementInput.y);
         rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
         //transform.Translate(moveDirection * speed * Time.deltaTime);
+    }
+
+    public void knockBack(Vector2 direction)
+    {
+        if (beingKnockedback)
+        {
+            return;
+        }
+        rb.linearVelocity = Vector2.zero; // clear existing momentum first
+        rb.AddForce(direction, ForceMode2D.Impulse);
+        beingKnockedback = true;
+        knockBackCooldown = baseKnockBackCooldown;
+
+        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage();
+        }
+
     }
 
 }
