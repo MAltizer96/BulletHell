@@ -8,7 +8,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     int maxEnemies = 10;
     [SerializeField]
+    float maxSpawnTimer;
     float spawnTimer = 0f;
+
+    int totalSpawnedEnemies = 0;
 
     Transform[] spawnPoints;
     List<GameObject> enemies = new List<GameObject>();
@@ -31,7 +34,7 @@ public class SpawnManager : MonoBehaviour
     {
         spawnPoints = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
         Enemy.OnEnemyDied += UpdateEnemies;
-        Debug.Log("Number of spawnPoints = " + spawnPoints.Length);
+        //Debug.Log("Number of spawnPoints = " + spawnPoints.Length);
     }
 
     private void Update()
@@ -41,7 +44,7 @@ public class SpawnManager : MonoBehaviour
             GameObject enemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
             //Debug.Log("Spawning enemy: " + enemy.name);
             SpawnEnemy(enemy);
-            spawnTimer = Random.Range(3f, 5f);
+            spawnTimer = Random.Range(maxSpawnTimer * 0.5f, maxSpawnTimer);
         }
         else
         {
@@ -57,6 +60,15 @@ public class SpawnManager : MonoBehaviour
         enemies.Add(enemy);
         GameObject enemiesParent = GameObject.Find("Enemies");
         enemy.transform.parent = enemiesParent.transform;
+        totalSpawnedEnemies++;
+
+        if(totalSpawnedEnemies % 2 == 0)
+        {
+            maxEnemies++;
+            maxSpawnTimer *= 0.9f;
+        }
+
+
     }
 
     void UpdateEnemies(Enemy enemy)
