@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     private float playedTimer = 0f;
 
     private TextMeshProUGUI timerText;
+
+    private int totalEnemiesKilled;
+    private TextMeshProUGUI totalEnemiesKilledText;
     [SerializeField]
     private GameObject gameOverPanel;
 
@@ -19,15 +22,19 @@ public class GameManager : MonoBehaviour
     private GameObject playerGameObject;
     private Transform playerStartingPosition;
 
+    public static event Action OnPlayerRestarts;
+
 
     void OnEnable()
     {
         PlayerHealth.OnPlayerDied += HandlePlayerDied;
+        Enemy.OnEnemyDied += EnemyKilled;
     }
 
     void OnDisable()
     {
         PlayerHealth.OnPlayerDied -= HandlePlayerDied;
+        Enemy.OnEnemyDied -= EnemyKilled;
     }
 
     private void Awake()
@@ -41,7 +48,11 @@ public class GameManager : MonoBehaviour
         playerGameObject = GameObject.Find("Player");
 
         // Set player position to starting position
-        playerGameObject.transform.position = playerStartingPosition.position; 
+        playerGameObject.transform.position = playerStartingPosition.position;
+
+        totalEnemiesKilledText = GameObject.Find("Kills_Text_Number").GetComponent<TextMeshProUGUI>();
+        totalEnemiesKilled = 0;
+        totalEnemiesKilledText.text = totalEnemiesKilled.ToString();
     }
     private void Update()
     {
@@ -80,5 +91,15 @@ public class GameManager : MonoBehaviour
 
         playerGameObject.transform.position = playerStartingPosition.position; // Reset player position
 
+        totalEnemiesKilled = 0;
+        totalEnemiesKilledText.text = totalEnemiesKilled.ToString();
+
+        OnPlayerRestarts?.Invoke();
+    }
+
+    private void EnemyKilled(Enemy enemy)
+    {
+        totalEnemiesKilled++;
+        totalEnemiesKilledText.text = totalEnemiesKilled.ToString();
     }
 }
