@@ -3,6 +3,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     bool isPaused;
+    bool isGameOver;
     public void TogglePause()
     {
         OnApplicationPause(!isPaused);
@@ -30,7 +31,7 @@ public class PauseManager : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        if (!focus)
+        if (!focus && !isGameOver)
         {
             OnApplicationPause(true);
         }
