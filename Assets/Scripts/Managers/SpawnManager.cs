@@ -65,10 +65,12 @@ public class SpawnManager : MonoBehaviour
         if(totalSpawnedEnemies % 2 == 0)
         {
             maxEnemies++;
+            if (maxSpawnTimer <= 1f)
+            {
+                return;
+            }
             maxSpawnTimer *= 0.9f;
         }
-
-
     }
 
     void UpdateEnemies(Enemy enemy)
