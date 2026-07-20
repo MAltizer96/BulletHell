@@ -63,8 +63,15 @@ public class GameManager : MonoBehaviour
         playerLastedForSeconds.text = Mathf.FloorToInt(playedTimer).ToString() + " seconds";
     }
 
-    void PlayerRestarsGames()
+    public void PlayerRestarsGames()
     {
+        // delete all current enemies
+        GameObject enemies = GameObject.Find("Enemies");
+        foreach (Transform enemy in enemies.transform)
+        {
+            Destroy(enemy.gameObject);         
+        }
+
         playedTimer = 0f;
         spawnManager.SpawnEnemies = true; // Resume spawning enemies
         pauseManager.TogglePause(); // Resume the game
@@ -72,7 +79,6 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(false); // Hide the game over panel
 
         playerGameObject.transform.position = playerStartingPosition.position; // Reset player position
-
 
     }
 }
