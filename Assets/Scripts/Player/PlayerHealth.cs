@@ -11,10 +11,11 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
 
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
 
     private void Awake()
     {
-        CurrentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
         UpdateHealthIcons();
     }
     public void TakeDamage()
@@ -35,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal()
     {
-        if (CurrentHealth < maxHealth)
+        if (CurrentHealth < MaxHealth)
         {
             CurrentHealth++;
             UpdateHealthIcons();
