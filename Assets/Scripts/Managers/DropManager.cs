@@ -32,7 +32,7 @@ public class DropManager : MonoBehaviour
         {
             GameObject pickup = gunPickupPrefab[Random.Range(0, gunPickupPrefab.Length)];
             SpawnPickup(pickup, enemy.transform);
-            gunDropChance = 0.1f; // Reset the chance for the next drop
+            gunDropChance = 0.05f; // Reset the chance for the next drop
         }
         else
         {
@@ -44,14 +44,14 @@ public class DropManager : MonoBehaviour
         {
             Debug.Log("Health pickup dropped.");
             
-            //SpawnPickup(healthPickupPrefab, enemy.transform);
+            SpawnPickup(healthPickupPrefab, enemy.transform);
 
-            healthDropChance = 0.2f; // Reset the chance for the next drop
+            healthDropChance = 0.05f; // Reset the chance for the next drop
         }
         else
         {
             Debug.Log("No health pickup dropped.");
-            healthDropChance += 0.05f; // Increase the chance for the next drop
+            healthDropChance += 0.075f; // Increase the chance for the next drop
         }
     }
 }
