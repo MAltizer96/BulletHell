@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         timerText = GameObject.Find("Timer_Text_Number").GetComponent<TextMeshProUGUI>();       
 
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
         pauseManager = GameObject.Find("PauseManager").GetComponent<PauseManager>();
 
         playerStartingPosition = GameObject.Find("PlayerStartPosition").transform;
