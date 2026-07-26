@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeed2cc69ddc94458aa6ba8df27a6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PickupsAssembly::HealthPickup
+  timerUntilDestroy: 10
