@@ -14,4 +14,6 @@ OnPlayerDied -- PlayerHealth.cs
 
 OnPlayerRestarts -- GameManager.cs
     Implemented
+        DropManager.cs
+        SpawnManager.cs
 
