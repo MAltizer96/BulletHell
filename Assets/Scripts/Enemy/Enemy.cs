@@ -38,7 +38,7 @@ public abstract class Enemy : MonoBehaviour, iDamageable
         healthSlider = GetComponent<EnemyHealthDisplay>();
         rb = GetComponent<Rigidbody2D>();
         aiLerp = GetComponent<AILerp>();
-        //Target = GameObject.FindGameObjectWithTag("Player");
+        Target = GameObject.FindGameObjectWithTag("Player");
 
         healthSlider.setMaxFill(MaxHealth);
         healthSlider.updateSlider(Health);
