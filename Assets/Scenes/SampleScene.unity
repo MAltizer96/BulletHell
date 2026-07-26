@@ -3577,7 +3577,7 @@ Transform:
   m_GameObject: {fileID: 613141151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.17, y: 0.59, z: 0}
+  m_LocalPosition: {x: -8.48, y: 0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4012,6 +4012,8 @@ MonoBehaviour:
   healthPickupPrefab: {fileID: 3124229303063562325, guid: c7a3703a879c86c48890f60fcf65679a, type: 3}
   baseGunDropChance: 0.005
   baseHealthDropChance: 0.01
+  gunDropChance: 0
+  healthDropChance: 0
 --- !u!1 &783896307
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,7 +5075,7 @@ Transform:
   m_GameObject: {fileID: 1177070887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3, y: 6.12, z: 0}
+  m_LocalPosition: {x: 1.3, y: 5.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5485,6 +5487,14 @@ PrefabInstance:
       propertyPath: 'healthIcons.Array.data[2]'
       value: 
       objectReference: {fileID: 1875207530}
+    - target: {fileID: 5826115159310166087, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826115159310166087, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5826115159310166087, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.03
@@ -6430,7 +6440,7 @@ Transform:
   m_GameObject: {fileID: 1625856525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.8, y: 0.59, z: 0}
+  m_LocalPosition: {x: 11.11, y: 0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7054,7 +7064,7 @@ Transform:
   m_GameObject: {fileID: 1934686709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3, y: -5.04, z: 0}
+  m_LocalPosition: {x: 1.3, y: -4.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
