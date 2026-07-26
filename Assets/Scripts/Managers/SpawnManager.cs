@@ -115,16 +115,18 @@ public class SpawnManager : MonoBehaviour
             totalImp++;
             return impPrefab;
         }
-        if(totalGoblin < maxGoblins)
+        if (totalGoblin < maxGoblins)
         {
             totalGoblin++;
             return goblinPrefab;
         }
-        if(totalSpider < maxSpiders)
+        if (totalSpider < maxSpiders)
         {
             totalSpider++;
             return spiderPrefab;
         }
+
+
         return null;
     }
 
