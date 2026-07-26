@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EnemyAnimation : MonoBehaviour
 {
@@ -15,6 +14,11 @@ public class EnemyAnimation : MonoBehaviour
     }
     private void Update()
     {
+        if (!player)
+        { 
+            return;
+        
+        }
 
         Vector2 direction = player.position - transform.position;
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
