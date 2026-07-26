@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
     private Transform playerStartingPosition;
 
     public static event Action OnPlayerRestarts;
+   
 
+    //[SerializeField]
+    //private GameObject playerPrefab;
 
     void OnEnable()
     {
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
         totalEnemiesKilledText = GameObject.Find("Kills_Text_Number").GetComponent<TextMeshProUGUI>();
         totalEnemiesKilled = 0;
         totalEnemiesKilledText.text = totalEnemiesKilled.ToString();
+        
+
     }
     private void Update()
     {
@@ -65,7 +70,13 @@ public class GameManager : MonoBehaviour
     void HandlePlayerDied(PlayerHealth player)
     {
         Debug.Log("Player has died. Game Over!");
+        GameObject enemies = GameObject.Find("Enemies");
 
+        // need to destroy pickup also!!
+        foreach (Transform enemy in enemies.transform)
+        {
+            Destroy(enemy.gameObject);
+        }
         pauseManager.PlayerDies(); // Pause the game
         spawnManager.SpawnEnemies = false; // Stop spawning enemies
 
@@ -73,24 +84,23 @@ public class GameManager : MonoBehaviour
 
         TextMeshProUGUI playerLastedForSeconds = gameOverPanel.transform.Find("Player_Lasted_For_Seconds_Text").GetComponent<TextMeshProUGUI>();
         playerLastedForSeconds.text = Mathf.FloorToInt(playedTimer).ToString() + " seconds";
+
+        //Destroy(playerGameObject);
+
     }
 
     public void PlayerRestarsGames()
     {
         // delete all current enemies
-        GameObject enemies = GameObject.Find("Enemies");
-        foreach (Transform enemy in enemies.transform)
-        {
-            Destroy(enemy.gameObject);         
-        }
-
+        //playerGameObject = Instantiate(playerPrefab, playerStartingPosition.position, playerStartingPosition.rotation);
+        playerGameObject.transform.position = playerStartingPosition.position;
         playedTimer = 0f;
         spawnManager.SpawnEnemies = true; // Resume spawning enemies
         pauseManager.TogglePause(); // Resume the game
 
         gameOverPanel.SetActive(false); // Hide the game over panel
 
-        playerGameObject.transform.position = playerStartingPosition.position; // Reset player position
+         // Reset player position
 
         totalEnemiesKilled = 0;
         totalEnemiesKilledText.text = totalEnemiesKilled.ToString();
