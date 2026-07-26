@@ -5,9 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] enemyPrefab;
-
-    [SerializeField]
     GameObject spiderPrefab;
     [SerializeField]
     GameObject goblinPrefab;
