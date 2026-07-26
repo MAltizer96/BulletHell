@@ -13,12 +13,18 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     int maxEnemies = 10;
+    [SerializeField]
     int maxSpiders;
+    [SerializeField]
     int maxGoblins;
+    [SerializeField]
     int maxImps;
 
+    [SerializeField]
     int totalSpider;
+    [SerializeField]
     int totalGoblin;
+    [SerializeField]
     int totalImp;
 
     [SerializeField]
@@ -53,17 +59,19 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
+        RecalculateEnemyCaps();
         spawnPoints = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
-        Enemy.OnEnemyDied += UpdateEnemies;
+        //Enemy.OnEnemyDied += UpdateEnemies;
         //Debug.Log("Number of spawnPoints = " + spawnPoints.Length);
     }
 
     private void Update()
     {
-        if (spawnTimer <= 0f && maxEnemies >= enemies.Count && SpawnEnemies)
+        if (spawnTimer <= 0f && maxEnemies > enemies.Count && SpawnEnemies)
         {
-            GameObject enemy = decideEnemy(); 
+            GameObject enemy = decideEnemy();
             //Debug.Log("Spawning enemy: " + enemy.name);
+            Debug.Log("Enemy: ", enemy);
             SpawnEnemy(enemy);
             spawnTimer = Random.Range(maxSpawnTimer * spawnTimerReduction, maxSpawnTimer);
         }
@@ -84,9 +92,9 @@ public class SpawnManager : MonoBehaviour
         enemy.transform.parent = enemiesParent.transform;
         totalSpawnedEnemies++;
 
-        // checks if the totalSpawned is divisable by 2, if it is increases max enemies allowed by 1
+        // checks if the totalSpawned is divisable by 5, if it is increases max enemies allowed by 1
         // make the game harder as time goes on
-        if(totalSpawnedEnemies % 2 == 0)
+        if(totalSpawnedEnemies % 5 == 0)
         {
             maxEnemies++;
 
@@ -104,14 +112,17 @@ public class SpawnManager : MonoBehaviour
     {
         if (totalImp < maxImps)
         {
+            totalImp++;
             return impPrefab;
         }
         if(totalGoblin < maxGoblins)
         {
+            totalGoblin++;
             return goblinPrefab;
         }
         if(totalSpider < maxSpiders)
         {
+            totalSpider++;
             return spiderPrefab;
         }
         return null;
@@ -119,7 +130,7 @@ public class SpawnManager : MonoBehaviour
 
     void RecalculateEnemyCaps()
     {
-        maxSpiders = Mathf.RoundToInt(maxEnemies * 0.5f);
+        maxSpiders = Mathf.RoundToInt(maxEnemies * 0.6f);
         maxGoblins = Mathf.RoundToInt(maxEnemies * 0.3f);
 
         // Imps get whatever's left, so the numbers always add up to maxEnemies
@@ -127,6 +138,22 @@ public class SpawnManager : MonoBehaviour
     }
     void UpdateEnemies(Enemy enemy)
     {
+        Debug.Log("Enemy: "+  enemy.name);
+        if (enemy.name.Contains("Imp"))
+        {
+            Debug.Log("was Imp");
+            totalImp -= 1;
+        }
+        if (enemy.name.Contains("Goblin"))
+        {
+            totalGoblin -= 1;
+        }
+        if(enemy.name.Contains("Spider"))
+        {
+            totalSpider -= 1;
+        }
+
         enemies.Remove(enemy.gameObject);
+        Destroy(enemy.gameObject);
     }
 }
