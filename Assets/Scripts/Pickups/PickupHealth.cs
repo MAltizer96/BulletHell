@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour
+public class HealthPickup : Pickup
 {
-
+    [SerializeField]
+    float timerUntilDestroy;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -17,11 +18,11 @@ public class HealthPickup : MonoBehaviour
                 }
                 playerHealth.Heal();
                 Destroy(gameObject);
-
             }
-
-
         }
-
+    }
+    private void Start()
+    {
+        StartCoroutine(StartTimerUntilPickedUp(timerUntilDestroy));
     }
 }
