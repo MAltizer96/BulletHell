@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] healthIcons; // Array of health icon GameObjects
+    private List<GameObject> healthIcons; // Array of health icon GameObjects
     public static event Action<PlayerHealth> OnPlayerDied;
     [SerializeField]
     private int maxHealth;
@@ -16,7 +17,14 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         CurrentHealth = MaxHealth;
+        SetHealtIcons();
         UpdateHealthIcons();
+        
+    }
+    private void Start()
+    {
+        
+
     }
     public void TakeDamage()
     {
@@ -44,9 +52,25 @@ public class PlayerHealth : MonoBehaviour
     }
     private void UpdateHealthIcons()
     {
-        for (int i = 0; i < healthIcons.Length; i++)
+
+        for (int i = 0; i < healthIcons.Count; i++)
         {
             healthIcons[i].SetActive(i < CurrentHealth);
+        }
+    }
+
+    private void SetHealtIcons()
+    {
+        
+        GameObject HealthPanel = GameObject.Find("Health_Panel");
+        //healthIcons.Clear();
+        foreach (var icon in healthIcons)
+        {
+            if (!healthIcons.Contains(icon))
+            { 
+                healthIcons.Add(icon);
+            }
+          
         }
     }
 
@@ -55,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
         // Handle player death logic here
         Debug.Log("Player has died.");
         OnPlayerDied?.Invoke(this);
+        
     }
 
 }
