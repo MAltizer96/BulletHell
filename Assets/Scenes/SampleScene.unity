@@ -234,7 +234,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.15
+  m_fontSize: 12.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4010,8 +4010,8 @@ MonoBehaviour:
   gunPickupPrefab:
   - {fileID: 661604786314585963, guid: c3ff34c69f1d4e444b1382708d088a4f, type: 3}
   healthPickupPrefab: {fileID: 3124229303063562325, guid: c7a3703a879c86c48890f60fcf65679a, type: 3}
-  gunDropChance: 0.05
-  healthDropChance: 0.1
+  baseGunDropChance: 0.005
+  baseHealthDropChance: 0.01
 --- !u!1 &783896307
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,7 +4172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.7
+  m_fontSize: 18.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4475,7 +4475,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.45
+  m_fontSize: 18.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4919,7 +4919,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.95
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5284,6 +5284,12 @@ MonoBehaviour:
   goblinPrefab: {fileID: 608740690429053091, guid: 2938f0b4cd7d91f48b38546aad683cba, type: 3}
   impPrefab: {fileID: 3257115884431478466, guid: 69701eee2ed76bc4f9a54ee10dc2f546, type: 3}
   maxEnemies: 10
+  maxSpiders: 0
+  maxGoblins: 0
+  maxImps: 0
+  totalSpider: 0
+  totalGoblin: 0
+  totalImp: 0
   maxSpawnTimer: 2
   spawnTimerReduction: 0.5
   minSpawnTimer: 0
@@ -6345,7 +6351,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.7
+  m_fontSize: 18.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6863,7 +6869,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10.45
+  m_fontSize: 10.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
