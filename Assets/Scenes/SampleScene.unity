@@ -234,7 +234,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.2
+  m_fontSize: 12.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4172,7 +4172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.95
+  m_fontSize: 18.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4475,7 +4475,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.7
+  m_fontSize: 18.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4919,7 +4919,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 17.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5282,8 +5282,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: ManagerAssembly::SpawnManager
   enemyPrefab:
   - {fileID: 7709133787081922043, guid: df08c156b420c1449b69954129bb4baf, type: 3}
+  spiderPrefab: {fileID: 0}
+  goblinPrefab: {fileID: 0}
+  impPrefab: {fileID: 0}
   maxEnemies: 25
   maxSpawnTimer: 2
+  spawnTimerReduction: 0.5
+  minSpawnTimer: 0
 --- !u!1 &1282080745
 GameObject:
   m_ObjectHideFlags: 0
@@ -6342,7 +6347,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.95
+  m_fontSize: 18.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6860,7 +6865,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10.5
+  m_fontSize: 10.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
