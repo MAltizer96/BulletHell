@@ -64,16 +64,24 @@ public class PlayerMovement : MonoBehaviour
 
     public void knockBack(Vector2 direction)
     {
+        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         if (beingKnockedback || playerDied)
         {
             return;
         }
+
+        if (playerHealth.CurrentHealth == 1) 
+        {
+            playerHealth.TakeDamage();
+            return;
+        }
+
         rb.linearVelocity = Vector2.zero; // clear existing momentum first
         rb.AddForce(direction, ForceMode2D.Impulse);
         beingKnockedback = true;
         knockBackCooldown = baseKnockBackCooldown;
 
-        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        
         if (playerHealth != null)
         {
             playerHealth.TakeDamage();
