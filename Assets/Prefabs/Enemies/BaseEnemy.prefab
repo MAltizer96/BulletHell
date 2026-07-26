@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8240286618689175686}
   - component: {fileID: 875660822860294003}
   - component: {fileID: 3146465231226503990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9158544348827742432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1524061304790092573}
   - component: {fileID: 8160813064984437512}
   - component: {fileID: 696087907095856136}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ RectTransform:
   m_Father: {fileID: 6857458234620403265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -2.4999976, y: 0}
   m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5426750789397517998}
   - component: {fileID: 4445850464005593825}
+  - component: {fileID: 8446113121288236785}
   - component: {fileID: 3026092456766180857}
   - component: {fileID: 6682153501432518224}
   - component: {fileID: 7250057120417079206}
@@ -231,13 +232,13 @@ GameObject:
   - component: {fileID: 5192628029116866254}
   - component: {fileID: 8281251983597967449}
   - component: {fileID: 3368343250552959072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5426750789397517998
 Transform:
   m_ObjectHideFlags: 0
@@ -313,6 +314,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &8446113121288236785
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522992813847896049}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &3026092456766180857
 Rigidbody2D:
   serializedVersion: 5
@@ -483,7 +506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::TouchPlayer
   knockbackForce: 5
-  baseHitCooldown: 0.25
 --- !u!114 &3368343250552959072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +530,7 @@ GameObject:
   - component: {fileID: 1248218310330692417}
   - component: {fileID: 7725158517465366775}
   - component: {fileID: 8553316919982405063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6857458234620403265}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5140439636566994802}
   - component: {fileID: 3236553015939624605}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +731,7 @@ GameObject:
   - component: {fileID: 6717128644161109342}
   - component: {fileID: 7357257827294754251}
   - component: {fileID: 7583926505838324877}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,8 +752,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9158544348827742432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
