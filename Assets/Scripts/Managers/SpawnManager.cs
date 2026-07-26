@@ -8,7 +8,22 @@ public class SpawnManager : MonoBehaviour
     GameObject[] enemyPrefab;
 
     [SerializeField]
+    GameObject spiderPrefab;
+    [SerializeField]
+    GameObject goblinPrefab;
+    [SerializeField]
+    GameObject impPrefab;
+
+    [SerializeField]
     int maxEnemies = 10;
+    int maxSpiders;
+    int maxGoblins;
+    int maxImps;
+
+    int totalSpider;
+    int totalGoblin;
+    int totalImp;
+
     [SerializeField]
     float maxSpawnTimer;
 
@@ -50,7 +65,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (spawnTimer <= 0f && maxEnemies >= enemies.Count && SpawnEnemies)
         {
-            GameObject enemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
+            GameObject enemy = decideEnemy(); 
             //Debug.Log("Spawning enemy: " + enemy.name);
             SpawnEnemy(enemy);
             spawnTimer = Random.Range(maxSpawnTimer * spawnTimerReduction, maxSpawnTimer);
@@ -64,16 +79,22 @@ public class SpawnManager : MonoBehaviour
     }
     void SpawnEnemy(GameObject enemy)
     {
-        int spawnIndex = Random.Range(1, spawnPoints.Length);
-        enemy = Instantiate(enemy, spawnPoints[spawnIndex].position, Quaternion.identity);
+        int spawnPointIndex = Random.Range(1, spawnPoints.Length);
+        
+        enemy = Instantiate(enemy, spawnPoints[spawnPointIndex].position, Quaternion.identity);
         enemies.Add(enemy);
         GameObject enemiesParent = GameObject.Find("Enemies");
         enemy.transform.parent = enemiesParent.transform;
         totalSpawnedEnemies++;
 
+        // checks if the totalSpawned is divisable by 2, if it is increases max enemies allowed by 1
+        // make the game harder as time goes on
         if(totalSpawnedEnemies % 2 == 0)
         {
             maxEnemies++;
+
+            RecalculateEnemyCaps();
+
             if (maxSpawnTimer <= 1f)
             {
                 return;
@@ -82,6 +103,31 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    GameObject decideEnemy()
+    {
+        if (totalImp < maxImps)
+        {
+            return impPrefab;
+        }
+        if(totalGoblin < maxGoblins)
+        {
+            return goblinPrefab;
+        }
+        if(totalSpider < maxSpiders)
+        {
+            return spiderPrefab;
+        }
+        return null;
+    }
+
+    void RecalculateEnemyCaps()
+    {
+        maxSpiders = Mathf.RoundToInt(maxEnemies * 0.5f);
+        maxGoblins = Mathf.RoundToInt(maxEnemies * 0.3f);
+
+        // Imps get whatever's left, so the numbers always add up to maxEnemies
+        maxImps = maxEnemies - maxSpiders - maxGoblins;
+    }
     void UpdateEnemies(Enemy enemy)
     {
         enemies.Remove(enemy.gameObject);
