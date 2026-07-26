@@ -4172,7 +4172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
+  m_fontSize: 18.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4475,7 +4475,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.75
+  m_fontSize: 18.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5283,7 +5283,7 @@ MonoBehaviour:
   enemyPrefab:
   - {fileID: 7709133787081922043, guid: df08c156b420c1449b69954129bb4baf, type: 3}
   maxEnemies: 25
-  maxSpawnTimer: 5
+  maxSpawnTimer: 2
 --- !u!1 &1282080745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5460,25 +5460,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 227529909665842339, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      propertyPath: baseKnockBackCooldown
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1604950843396174043, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977783655085610269, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977783655085610269, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      propertyPath: healthIcons.Array.size
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1977783655085610269, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: 'healthIcons.Array.data[0]'
@@ -5492,10 +5476,6 @@ PrefabInstance:
       propertyPath: 'healthIcons.Array.data[2]'
       value: 
       objectReference: {fileID: 1875207530}
-    - target: {fileID: 4926778780994315404, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      propertyPath: trackGuns
-      value: 
-      objectReference: {fileID: 277243319}
     - target: {fileID: 5826115159310166087, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.03
@@ -5535,10 +5515,6 @@ PrefabInstance:
     - target: {fileID: 5826115159310166087, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7114159366703285697, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
-      propertyPath: timerForGun
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7858520484142267912, guid: 8f0c2abdcbae9454c832b79f7cc68c9f, type: 3}
       propertyPath: m_Camera
@@ -6366,7 +6342,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
+  m_fontSize: 18.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7674,14 +7650,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2589900316409607071, guid: 2938f0b4cd7d91f48b38546aad683cba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207869675985671092, guid: 2938f0b4cd7d91f48b38546aad683cba, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207869675985671092, guid: 2938f0b4cd7d91f48b38546aad683cba, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045615909088548234, guid: 2938f0b4cd7d91f48b38546aad683cba, type: 3}
