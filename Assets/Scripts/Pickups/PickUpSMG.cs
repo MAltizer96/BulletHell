@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class PickUpSMG : MonoBehaviour
+public class PickUpSMG : Pickup
 {
     [SerializeField]
     float timerWithGun;
     [SerializeField]
-    float timerUntileGunDisappear;
+    float timerUntilDestroy;
 
     private MachineGun SMGgun;
     private TrackGuns trackGuns;
@@ -15,7 +15,7 @@ public class PickUpSMG : MonoBehaviour
     {
         SMGgun = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<MachineGun>();
         trackGuns = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<TrackGuns>();
-        StartCoroutine(StartTimerUntilPickedUp());
+        StartCoroutine(StartTimerUntilPickedUp(timerUntilDestroy));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,9 +29,9 @@ public class PickUpSMG : MonoBehaviour
         }
     }
 
-    private IEnumerator StartTimerUntilPickedUp()
-    {
-        yield return new WaitForSeconds(timerUntileGunDisappear);
-        Destroy(gameObject);
-    }
+    //private IEnumerator StartTimerUntilPickedUp()
+    //{
+    //    yield return new WaitForSeconds(timerUntileGunDisappear);
+    //    Destroy(gameObject);
+    //}
 }
