@@ -20,11 +20,13 @@ public class DropManager : MonoBehaviour
     void OnEnable()
     {
         Enemy.OnEnemyDied += HandleEnemyDied;
+        GameManager.OnPlayerRestarts += PlayerRestarts;
     }
 
     void OnDisable()
     {
         Enemy.OnEnemyDied -= HandleEnemyDied;
+        GameManager.OnPlayerRestarts -= PlayerRestarts;
     }
     private void Awake()
     {
@@ -64,5 +66,11 @@ public class DropManager : MonoBehaviour
             Debug.Log("No health pickup dropped.");
             healthDropChance *= 1.2f; // Increase the chance for the next drop
         }
+    }
+
+    void PlayerRestarts()
+    {
+        healthDropChance = baseHealthDropChance;
+        gunDropChance = baseGunDropChance;
     }
 }

@@ -12,7 +12,8 @@ public class SpawnManager : MonoBehaviour
     GameObject impPrefab;
 
     [SerializeField]
-    int maxEnemies = 10;
+    int baseMaxEnemies;
+    int maxEnemies;    
     [SerializeField]
     int maxSpiders;
     [SerializeField]
@@ -50,15 +51,18 @@ public class SpawnManager : MonoBehaviour
     void OnEnable()
     {
         Enemy.OnEnemyDied += UpdateEnemies;
+        GameManager.OnPlayerRestarts += PlayerRestarts;
     }
 
     void OnDisable()
     {
         Enemy.OnEnemyDied -= UpdateEnemies;
+        GameManager.OnPlayerRestarts -= PlayerRestarts;
     }
 
     private void Awake()
     {
+        maxEnemies = baseMaxEnemies;
         RecalculateEnemyCaps();
         spawnPoints = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
         //Enemy.OnEnemyDied += UpdateEnemies;
@@ -157,5 +161,11 @@ public class SpawnManager : MonoBehaviour
 
         enemies.Remove(enemy.gameObject);
         Destroy(enemy.gameObject);
+    }
+
+    void PlayerRestarts()
+    {
+        maxEnemies = baseMaxEnemies;
+        RecalculateEnemyCaps();
     }
 }
