@@ -26,7 +26,11 @@ public class DropManager : MonoBehaviour
     {
         Enemy.OnEnemyDied -= HandleEnemyDied;
     }
-
+    private void Awake()
+    {
+        gunDropChance = baseGunDropChance;
+        healthDropChance = baseHealthDropChance;
+    }
     void SpawnPickup(GameObject pickUpToSpawn, Transform location)
     {
         // spawn that bitch in!
@@ -45,7 +49,7 @@ public class DropManager : MonoBehaviour
         else
         {
             Debug.Log("No pickup dropped.");
-            gunDropChance += 0.01f; // Increase the chance for the next drop
+            gunDropChance *= 1.1f; // Increase the chance for the next drop
         }
         if (Random.value <= healthDropChance)
         {
@@ -58,7 +62,7 @@ public class DropManager : MonoBehaviour
         else
         {
             Debug.Log("No health pickup dropped.");
-            healthDropChance += 0.015f; // Increase the chance for the next drop
+            healthDropChance *= 1.2f; // Increase the chance for the next drop
         }
     }
 }
