@@ -1,15 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
     GameObject[] enemyPrefab;
+
     [SerializeField]
     int maxEnemies = 10;
     [SerializeField]
     float maxSpawnTimer;
+
+    [SerializeField]
+    float spawnTimerReduction =0.5f;
+    [SerializeField]
+    float minSpawnTimer;
+
     float spawnTimer = 0f;
+
 
     int totalSpawnedEnemies = 0;
 
@@ -44,7 +53,7 @@ public class SpawnManager : MonoBehaviour
             GameObject enemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
             //Debug.Log("Spawning enemy: " + enemy.name);
             SpawnEnemy(enemy);
-            spawnTimer = Random.Range(maxSpawnTimer * 0.5f, maxSpawnTimer);
+            spawnTimer = Random.Range(maxSpawnTimer * spawnTimerReduction, maxSpawnTimer);
         }
         else
         {
