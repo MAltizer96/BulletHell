@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void knockBack(Vector2 direction)
     {
-        if (beingKnockedback)
+        if (beingKnockedback || playerDied)
         {
             return;
         }
@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerDied(PlayerHealth player)
     {
         playerDied = true;
+
     }
 
 }
