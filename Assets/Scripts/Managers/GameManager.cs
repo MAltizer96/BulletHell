@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
-
-
     private float playedTimer = 0f;
 
     private TextMeshProUGUI timerText;
@@ -16,7 +14,6 @@ public class GameManager : MonoBehaviour
     private GameObject gameOverPanel;
 
     private SpawnManager spawnManager;
-
     private PauseManager pauseManager;
 
     private GameObject playerGameObject;
@@ -105,6 +102,11 @@ public class GameManager : MonoBehaviour
         totalEnemiesKilled = 0;
         totalEnemiesKilledText.text = totalEnemiesKilled.ToString();
 
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
         OnPlayerRestarts?.Invoke();
     }
 
