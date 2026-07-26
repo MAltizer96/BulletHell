@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1db8ddcea439a438b7e65915fe778a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
-  maxHealth: 3
+  maxHealth: 4
   speed: 1
   aiLerp: {fileID: 2423617045603023379}
 --- !u!114 &8754459869354677674
