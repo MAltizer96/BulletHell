@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField]
     GameObject spiderPrefab;
     [SerializeField]
@@ -11,9 +12,13 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     GameObject impPrefab;
 
+
+
+    [Space(10)]
+    [Header ("Max Enemies")]
     [SerializeField]
     int baseMaxEnemies;
-    int maxEnemies;    
+    int maxEnemies;
     [SerializeField]
     int maxSpiders;
     [SerializeField]
@@ -21,6 +26,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     int maxImps;
 
+    [Space(10)]
+    [Header ("Current Total For Each")]
     [SerializeField]
     int totalSpider;
     [SerializeField]
@@ -28,9 +35,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     int totalImp;
 
+    [Space(10)]
+    [Header ("Timers")]
     [SerializeField]
     float maxSpawnTimer;
-
     [SerializeField]
     float spawnTimerReduction =0.5f;
     [SerializeField]
@@ -75,7 +83,7 @@ public class SpawnManager : MonoBehaviour
         {
             GameObject enemy = decideEnemy();
             //Debug.Log("Spawning enemy: " + enemy.name);
-            Debug.Log("Enemy: ", enemy);
+            Debug.Log("Enemy: " +  enemy.name);
             SpawnEnemy(enemy);
             spawnTimer = Random.Range(maxSpawnTimer * spawnTimerReduction, maxSpawnTimer);
         }
