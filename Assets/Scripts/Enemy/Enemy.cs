@@ -75,6 +75,6 @@ public abstract class Enemy : MonoBehaviour, iDamageable
     public void Dead()
     {
         OnEnemyDied?.Invoke(this);
-        Destroy(gameObject);
+
     }
 }
