@@ -152,10 +152,10 @@ public class SpawnManager : MonoBehaviour
     }
     void UpdateEnemies(Enemy enemy)
     {
-        Debug.Log("Enemy: "+  enemy.name);
+        //Debug.Log("Enemy: "+  enemy.name);
         if (enemy.name.Contains("Imp"))
         {
-            Debug.Log("was Imp");
+            //Debug.Log("was Imp");
             totalImp -= 1;
         }
         if (enemy.name.Contains("Goblin"))
