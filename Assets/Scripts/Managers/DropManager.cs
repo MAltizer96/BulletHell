@@ -2,20 +2,27 @@ using UnityEngine;
 
 public class DropManager : MonoBehaviour
 {
-
+    [Header("Prefabs")]
     [SerializeField] 
     private GameObject[] gunPickupPrefab;
     [SerializeField] 
     private GameObject healthPickupPrefab;
+
+    [Space(10)]
+    [Header("Percentages")]
     [SerializeField] 
     private float baseGunDropChance = 0.1f;
     [SerializeField] 
     private float baseHealthDropChance = 0.2f;
-
     [SerializeField]
     float gunDropChance;
     [SerializeField]
     float healthDropChance;
+    [SerializeField]
+    float gunDropChanceMultiplication;
+    [SerializeField]
+    float healthDropsChanceMultiplication;
+
 
     void OnEnable()
     {
@@ -50,12 +57,12 @@ public class DropManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No pickup dropped.");
-            gunDropChance *= 1.1f; // Increase the chance for the next drop
+            //Debug.Log("No pickup dropped.");
+            gunDropChance *= gunDropChanceMultiplication; // Increase the chance for the next drop
         }
         if (Random.value <= healthDropChance)
         {
-            Debug.Log("Health pickup dropped.");
+            //Debug.Log("Health pickup dropped.");
             
             SpawnPickup(healthPickupPrefab, enemy.transform);
 
@@ -63,8 +70,8 @@ public class DropManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No health pickup dropped.");
-            healthDropChance *= 1.2f; // Increase the chance for the next drop
+            //Debug.Log("No health pickup dropped.");
+            healthDropChance *= healthDropsChanceMultiplication; // Increase the chance for the next drop
         }
     }
 
