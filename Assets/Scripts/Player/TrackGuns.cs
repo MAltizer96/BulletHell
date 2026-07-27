@@ -19,7 +19,7 @@ public class TrackGuns : MonoBehaviour
             if (currentGun == value) return;
             currentGun = value;
             OnGunChanged?.Invoke(currentGun);
-            SetCurrentGun(currentGun);
+            //SetCurrentGun(currentGun);
 
         }
     }
@@ -80,17 +80,16 @@ public class TrackGuns : MonoBehaviour
 
     public void SetCurrentGun(Gun gun)
     {
-        Debug.Log("Ran-1");
+
         if (gun == null || !allGuns.Contains(gun)) return;
 
         // Optionally enable/disable gun components so only the active is enabled
-        Debug.Log("Ran0");
+
         foreach (var g in allGuns)
         {
             var mb = g as MonoBehaviour;
             if (mb != null) mb.enabled = (g == gun);
         }
-        Debug.Log("Ran");
         if (gun.GetType().Name == "BaseGun")
         {
             if (gunTimerRoutine != null)
@@ -102,13 +101,13 @@ public class TrackGuns : MonoBehaviour
             }
         }
         CurrentGun = gun;
-        Debug.Log("Ran1");
+
         if (gunTimerRoutine != null)
         {
             StopCoroutine(gunTimerRoutine);
         }
         gunTimerRoutine = StartCoroutine(StartNewGun(CurrentGun.timerForGun));
-        Debug.Log("Ran2");
+
     }
 
     public IEnumerator StartNewGun(float time)
