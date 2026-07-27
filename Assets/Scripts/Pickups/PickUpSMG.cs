@@ -24,7 +24,7 @@ public class PickUpSMG : Pickup
         if (other.CompareTag("Player"))
         {
             //Debug.Log("Player entered the trigger zone.");
-            trackGuns.CurrentGun = SMGgun;
+            trackGuns.SetCurrentGun(SMGgun);
             Destroy(gameObject);
         }
     }
