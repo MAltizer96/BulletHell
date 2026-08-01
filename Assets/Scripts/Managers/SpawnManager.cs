@@ -114,7 +114,8 @@ public class SpawnManager : MonoBehaviour
 
         // checks if the totalSpawned is divisable by 5, if it is increases max enemies allowed by 1
         // make the game harder as time goes on
-        if(totalSpawnedEnemies % 5 == 0)
+        int enemiesPerIncrease = 3;
+        if (totalSpawnedEnemies % enemiesPerIncrease == 0)
         {
             maxEnemies++;
 
