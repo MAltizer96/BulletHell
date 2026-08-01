@@ -94,7 +94,8 @@ public class SpawnManager : MonoBehaviour
             GameObject enemy = decideEnemy();
 
             SpawnEnemy(enemy);
-            spawnTimer = Random.Range(maxSpawnTimer * spawnTimerReduction, maxSpawnTimer);
+            float timesReuduction = 0.9f;
+            spawnTimer = Random.Range(maxSpawnTimer * timesReuduction, maxSpawnTimer);
         }
         else
         {
@@ -123,7 +124,7 @@ public class SpawnManager : MonoBehaviour
             {
                 return;
             }
-            maxSpawnTimer *= 0.9f;
+            maxSpawnTimer *= spawnTimerReduction;
         }
     }
 
@@ -177,6 +178,7 @@ public class SpawnManager : MonoBehaviour
         var enemyBehavior = enemy as MonoBehaviour;
         enemies.Remove(enemyBehavior.gameObject);
         Destroy(enemyBehavior.gameObject);
+
     }
 
     void PlayerDied(iDamageable damageable)
@@ -187,6 +189,7 @@ public class SpawnManager : MonoBehaviour
     {
         maxEnemies = baseMaxEnemies;
         maxSpawnTimer = baseMaxSpawnTimer;
+        spawnTimer = maxSpawnTimer;
         SpawnEnemies = true;
         RecalculateEnemyCaps();
     }
