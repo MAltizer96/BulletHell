@@ -2,10 +2,9 @@
     "name": "EnemyAssembly",
     "rootNamespace": "",
     "references": [
-        "InterfaceAssembly",
-        "ImportAssembly",
         "AstarPathfindingProject",
-        "PlayerAssembly"
+        "ImportAssembly",
+        "CoreAssembly"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BaseGun : Gun
 {
+    public override GunType GunType => GunType.Base;
+
     private void Awake()
     {
         IsAutomatic = false; // Base gun is semi-automatic

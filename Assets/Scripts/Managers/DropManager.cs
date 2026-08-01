@@ -26,14 +26,14 @@ public class DropManager : MonoBehaviour
 
     void OnEnable()
     {
-        Enemy.OnEnemyDied += HandleEnemyDied;
-        GameManager.OnPlayerRestarts += PlayerRestarts;
+        EnemyEvents.OnEnemyDied += HandleEnemyDied;
+        PlayerEvents.OnPlayerRestarts += PlayerRestarts;
     }
 
     void OnDisable()
     {
-        Enemy.OnEnemyDied -= HandleEnemyDied;
-        GameManager.OnPlayerRestarts -= PlayerRestarts;
+        EnemyEvents.OnEnemyDied -= HandleEnemyDied;
+        PlayerEvents.OnPlayerRestarts -= PlayerRestarts;
     }
     private void Awake()
     {
@@ -46,12 +46,13 @@ public class DropManager : MonoBehaviour
         pickUpToSpawn = Instantiate(pickUpToSpawn, location.position, Quaternion.identity);
     }
 
-    void HandleEnemyDied(Enemy enemy)
+    void HandleEnemyDied(iEnemy enemy)
     {
+        var enemyBehaviour = enemy as MonoBehaviour;
         if (Random.value <= gunDropChance)
         {
             GameObject pickup = gunPickupPrefab[Random.Range(0, gunPickupPrefab.Length)];
-            SpawnPickup(pickup, enemy.transform);
+            SpawnPickup(pickup, enemyBehaviour.transform);
             gunDropChance = baseGunDropChance; // Reset the chance for the next drop
             return;
         }
@@ -64,7 +65,7 @@ public class DropManager : MonoBehaviour
         {
             //Debug.Log("Health pickup dropped.");
             
-            SpawnPickup(healthPickupPrefab, enemy.transform);
+            SpawnPickup(healthPickupPrefab, enemyBehaviour.transform);
 
             healthDropChance = baseHealthDropChance; // Reset the chance for the next drop
         }

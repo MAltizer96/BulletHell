@@ -16,14 +16,19 @@ public class PlayerMovement : MonoBehaviour
     float knockBackCooldown; // Current cooldown timer
 
     bool playerDied = false;
+
     void OnEnable()
     {
-        PlayerHealth.OnPlayerDied += PlayerDied;
+        PlayerEvents.OnPlayerDied += PlayerDied;
+        PlayerEvents.OnKnockBack += KnockBack;
+
     }
 
     void OnDisable()
     {
-        PlayerHealth.OnPlayerDied -= PlayerDied;
+        PlayerEvents.OnPlayerDied -= PlayerDied;
+        PlayerEvents.OnKnockBack -= KnockBack;
+
     }
 
     private void Start()
@@ -62,7 +67,12 @@ public class PlayerMovement : MonoBehaviour
         //transform.Translate(moveDirection * speed * Time.deltaTime);
     }
 
-    public void knockBack(Vector2 direction)
+    void PlayerDied(iDamageable player)
+    {
+        playerDied = true;
+
+    }
+    public void KnockBack(Vector2 direction, float force)
     {
         PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         if (beingKnockedback || playerDied)
@@ -70,18 +80,20 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (playerHealth.CurrentHealth == 1) 
+        if (playerHealth.CurrentHealth == 1)
         {
             playerHealth.TakeDamage();
             return;
         }
+
+        //OnKnockBack.Invoke();
 
         rb.linearVelocity = Vector2.zero; // clear existing momentum first
         rb.AddForce(direction, ForceMode2D.Impulse);
         beingKnockedback = true;
         knockBackCooldown = baseKnockBackCooldown;
 
-        
+
         if (playerHealth != null)
         {
             playerHealth.TakeDamage();
@@ -89,10 +101,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void PlayerDied(PlayerHealth player)
-    {
-        playerDied = true;
-
-    }
 
 }

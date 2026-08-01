@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class MachineGun : Gun
 {
+    public override GunType GunType => GunType.SMG;
+
     private void Awake()
     {
         IsAutomatic = true;
 
-        ShootCooldown = baseCooldown;
+        //ShootCooldown = baseCooldown;
     }
 
     public override void Shoot(Vector2 playerPos, GameObject Bullet, Vector2 MousePos)

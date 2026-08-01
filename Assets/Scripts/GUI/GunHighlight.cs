@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+
 public class GunHighlight : MonoBehaviour
 {
     [SerializeField]
@@ -11,7 +12,7 @@ public class GunHighlight : MonoBehaviour
     {
         trackGuns = GameObject.FindGameObjectWithTag("Player").GetComponent<TrackGuns>();
         if (trackGuns != null)
-            trackGuns.OnGunChanged += HandleGunChanged;
+        PlayerEvents.OnGunChanged += HandleGunChanged;
 
         gunImages.Clear();
         //look at this againe, have not tested
@@ -20,11 +21,11 @@ public class GunHighlight : MonoBehaviour
         {
             gunImages.Add(img);
         }
-        Debug.Log("CurrentGun Index: " + trackGuns.GetCurrentGunIndex());
+        //Debug.Log("CurrentGun Index: " + trackGuns.GetCurrentGunIndex());
 
         foreach (var g in gunImages)
         {
-            Debug.Log("Gun Image: " + g.gameObject.name);
+            //Debug.Log("Gun Image: " + g.gameObject.name);
         }
     }
 
@@ -39,7 +40,7 @@ public class GunHighlight : MonoBehaviour
         gunImages[gunIndex].gameObject.SetActive(true); // Show the selected gun image
     }
 
-    public void HandleGunChanged(Gun newGun)
+    public void HandleGunChanged(iGun newGun)
     {
         int gunIndex = trackGuns.GetCurrentGunIndex();
         HighlightGun(gunIndex);

@@ -7,7 +7,7 @@ public class TouchPlayer : MonoBehaviour
     [SerializeField]
     private float knockbackForce;
 
-    PlayerMovement playerMovement;
+    //PlayerMovement playerMovement;
     BoxCollider2D boxCollider;
     GameObject playerGameObject;
     
@@ -19,7 +19,7 @@ public class TouchPlayer : MonoBehaviour
             Debug.LogError("BoxCollider2D component is missing on " + gameObject.name);
         }
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = playerGameObject.GetComponent<PlayerMovement>();
+        //playerMovement = playerGameObject.GetComponent<PlayerMovement>();
 
     }
 
@@ -35,7 +35,9 @@ public class TouchPlayer : MonoBehaviour
             if (rb != null)
             {
                 Vector2 direction = knockDirection * knockbackForce;
-                playerMovement.knockBack(direction);
+                iDamageable playerDamageable = collision.GetComponent<iDamageable>();
+                playerDamageable.KnockBack(playerDamageable, direction, 0);
+                //playerMovement.knockBack(direction);
             }
         }
     }

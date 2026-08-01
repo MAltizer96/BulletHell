@@ -7,28 +7,31 @@ public class PlayerShoot : MonoBehaviour
     GameObject Bullet;
     [SerializeField]
     TrackGuns trackGuns;
-
+    [SerializeField]
     iGun currentGun;
+
+    private PlayerHealth playerHealth;
+
+    private void OnEnable()
+    {
+        PlayerEvents.OnGunChanged += HandleGunChanged;
+
+    }
+    private void OnDisable()
+    {
+        PlayerEvents.OnGunChanged -= HandleGunChanged;
+    }
     void Start()
     {
+        playerHealth = GetComponent<PlayerHealth>();
         // Prefer an enabled implementation of iGun if multiple are attached.
         TrackGuns trackGuns = GetComponent<TrackGuns>();
         var guns = GetComponents<iGun>();
-        if (trackGuns != null)
-            trackGuns.OnGunChanged += HandleGunChanged;
+        //if (trackGuns != null)
+        //    PlayerEvents.OnGunChanged += HandleGunChanged;
 
         currentGun = trackGuns.CurrentGun;
-        //foreach (var g in guns)
-        //{
-        //    var mb = g as MonoBehaviour;
-        //    if (mb != null && mb.enabled)
-        //    {
-        //        currentGun = g;
-        //        break;
-        //    }
-        //}
 
-        // Fallback: if none enabled, use the first one found (if any)
         if (currentGun == null && guns.Length > 0)
             currentGun = guns[0];
 
@@ -38,7 +41,10 @@ public class PlayerShoot : MonoBehaviour
     private void Update()
     {
         bool shouldShoot = false;
-
+        if(playerHealth.IsDead)
+        {
+            return; // Don't allow shooting if the player is dead
+        }
         if (currentGun.IsAutomatic)
         {
             // Automatic gun - fires every frame the button is held
@@ -57,6 +63,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void TryShoot()
     {
+        //Debug.Log("try to shoot");
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         Vector2 playerPos = transform.position;
@@ -67,28 +74,12 @@ public class PlayerShoot : MonoBehaviour
     {
         currentGun = newGun;
     }
-    private void OnDisable()
+
+    private void PlayerReset()
     {
-        if (trackGuns != null)
-            trackGuns.OnGunChanged -= HandleGunChanged;
+
     }
 
 }
-//private void OnShoot(InputValue input)
-//    {
 
-//        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-//        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-
-//        if(currentGun != null)
-//        {
-//            Vector2 playerPos = transform.position;
-//            currentGun.Shoot(playerPos, Bullet, mouseWorldPos);
-//        }
-//        else
-//        {
-//            Debug.LogWarning("No gun component found on the player.");
-//        }
-
-//    }
 

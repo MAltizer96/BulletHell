@@ -52,10 +52,10 @@ GameObject:
   - component: {fileID: 6130103949912548771}
   - component: {fileID: 2719064907292811178}
   - component: {fileID: 4697277185923440014}
-  - component: {fileID: 6594259902477981412}
   - component: {fileID: 4762969538175315311}
   - component: {fileID: 78120081716315516}
   - component: {fileID: 7001464560807109363}
+  - component: {fileID: 7876798960667270515}
   m_Layer: 7
   m_Name: GoblinEnemy
   m_TagString: Untagged
@@ -302,21 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5f0fe3989436a43aee5c5a9deb79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::EnemyMovement
---- !u!114 &6594259902477981412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608740690429053091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f1db8ddcea439a438b7e65915fe778a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
-  maxHealth: 3
   speed: 2
-  aiLerp: {fileID: 2719064907292811178}
 --- !u!114 &4762969538175315311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +341,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cc6740b40178943bf33df391e41b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::EnemyAnimation
+--- !u!114 &7876798960667270515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608740690429053091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fabba7dd70db7840be77c73013b009d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EnemyAssembly::EnemyHealth
+  maxHealth: 2
 --- !u!1 &1986745056499043697
 GameObject:
   m_ObjectHideFlags: 0

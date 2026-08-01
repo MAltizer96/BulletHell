@@ -16,15 +16,31 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        iDamageable damageable = collision.GetComponent<iDamageable>();
+        if (collision.tag == "Player")
+        {
+            return;
+        }
+        //Debug.Log("Collision: " + collision.name);
+        iEnemy damageable = collision.GetComponent<iEnemy>();
+        var damGO = damageable as Behaviour;
+        //if (damGO.gameObject != collision.gameObject) 
+        //{
+        //    return;
+        //}
+        //Debug.Log("Damageable: " + damageable);
         if (damageable != null)
         {
-            Debug.Log("Bullet hit damageable: " + collision.gameObject.name);
+
+            if(damGO.gameObject != collision.gameObject)
+            {
+                return;
+            }
+            //Debug.Log("Bullet hit damageable: " + collision.gameObject.name);
             Vector2 knockBackDirection = rb.linearVelocity.normalized;
             float knockBackForce = KnockBack;
 
-            damageable.TakeDamage(BulletDamage);
-            damageable.KnockBack(rb.linearVelocity.normalized, knockBackForce);
+            damageable.TakeDamage();
+            damageable.KnockBack(damageable,rb.linearVelocity.normalized, knockBackForce);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Obstacle"))

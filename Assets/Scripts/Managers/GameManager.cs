@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
 
     private GameObject playerGameObject;
     private Transform playerStartingPosition;
-
-    public static event Action OnPlayerRestarts;
    
 
     //[SerializeField]
@@ -27,14 +25,18 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerHealth.OnPlayerDied += HandlePlayerDied;
-        Enemy.OnEnemyDied += EnemyKilled;
+        PlayerEvents.OnPlayerDied += HandlePlayerDied;
+        //PlayerEvents.OnPlayerRestarts += PlayerRestarsGames;
+
+        EnemyEvents.OnEnemyDied += EnemyKilled;
     }
 
     void OnDisable()
     {
-        PlayerHealth.OnPlayerDied -= HandlePlayerDied;
-        Enemy.OnEnemyDied -= EnemyKilled;
+        PlayerEvents.OnPlayerDied -= HandlePlayerDied;
+        //PlayerEvents.OnPlayerRestarts -= PlayerRestarsGames;
+
+        EnemyEvents.OnEnemyDied -= EnemyKilled;
     }
 
     private void Awake()
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
 
         playerStartingPosition = GameObject.Find("PlayerStartPosition").transform;
         playerGameObject = GameObject.Find("Player");
+
+        
 
         // Set player position to starting position
         playerGameObject.transform.position = playerStartingPosition.position;
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void HandlePlayerDied(PlayerHealth player)
+    void HandlePlayerDied(iDamageable player)
     {
         Debug.Log("Player has died. Game Over!");
         GameObject enemies = GameObject.Find("Enemies");
@@ -75,7 +79,7 @@ public class GameManager : MonoBehaviour
             Destroy(enemy.gameObject);
         }
         pauseManager.PlayerDies(); // Pause the game
-        spawnManager.SpawnEnemies = false; // Stop spawning enemies
+        //spawnManager.SpawnEnemies = false; // Stop spawning enemies
 
         gameOverPanel.SetActive(true); // Show the game over panel
 
@@ -92,7 +96,7 @@ public class GameManager : MonoBehaviour
         //playerGameObject = Instantiate(playerPrefab, playerStartingPosition.position, playerStartingPosition.rotation);
         playerGameObject.transform.position = playerStartingPosition.position;
         playedTimer = 0f;
-        spawnManager.SpawnEnemies = true; // Resume spawning enemies
+        //spawnManager.SpawnEnemies = true; // Resume spawning enemies
         pauseManager.TogglePause(); // Resume the game
 
         gameOverPanel.SetActive(false); // Hide the game over panel
@@ -107,10 +111,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(bullet);
         }
-        OnPlayerRestarts?.Invoke();
+        PlayerEvents.PlayerRestarts();
     }
 
-    private void EnemyKilled(Enemy enemy)
+    private void EnemyKilled(iEnemy enemy)
     {
         totalEnemiesKilled++;
         totalEnemiesKilledText.text = totalEnemiesKilled.ToString();

@@ -2,9 +2,8 @@
     "name": "ManagerAssembly",
     "rootNamespace": "",
     "references": [
-        "PlayerAssembly",
-        "EnemyAssembly",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "CoreAssembly"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -379,10 +379,10 @@ GameObject:
   - component: {fileID: 1793447678119241974}
   - component: {fileID: 8021782180216009178}
   - component: {fileID: 4714020358959205385}
-  - component: {fileID: 2944984317856301250}
   - component: {fileID: 6564532287555727739}
   - component: {fileID: 1272676928974511051}
   - component: {fileID: 2155859703593193621}
+  - component: {fileID: 3974358595028421499}
   m_Layer: 7
   m_Name: SpiderEnemy
   m_TagString: Untagged
@@ -629,21 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5f0fe3989436a43aee5c5a9deb79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::EnemyMovement
---- !u!114 &2944984317856301250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7709133787081922043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f1db8ddcea439a438b7e65915fe778a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
-  maxHealth: 1
   speed: 3
-  aiLerp: {fileID: 8021782180216009178}
 --- !u!114 &6564532287555727739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,6 +668,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cc6740b40178943bf33df391e41b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::EnemyAnimation
+--- !u!114 &3974358595028421499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709133787081922043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fabba7dd70db7840be77c73013b009d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EnemyAssembly::EnemyHealth
+  maxHealth: 1
 --- !u!1 &8234761801447841178
 GameObject:
   m_ObjectHideFlags: 0

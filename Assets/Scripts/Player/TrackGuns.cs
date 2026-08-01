@@ -5,25 +5,88 @@ using UnityEngine;
 
 public class TrackGuns : MonoBehaviour
 {
-    private Gun currentGun;
-    public List<Gun> allGuns;
 
-    public event Action<Gun> OnGunChanged;
+
+    private iGun currentGun;
+    public List<iGun> allGuns;
 
     Coroutine gunTimerRoutine;
-    public Gun CurrentGun
+    public iGun CurrentGun
     {
         get => currentGun;
         set
         {
             if (currentGun == value) return;
             currentGun = value;
-            OnGunChanged?.Invoke(currentGun);
+            //PlayerEvents.GunChanged(currentGun);
             //SetCurrentGun(currentGun);
 
         }
     }
 
+    private void OnEnable()
+    {
+        PlayerEvents.OnGunChanged += SetCurrentGun;
+        PlayerEvents.OnPlayerDied += (_) => ResetToBaseGun();
+        //PlayerEvents.OnPlayerDied += ResetToBaseGun;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEvents.OnGunChanged -= SetCurrentGun;
+        PlayerEvents.OnPlayerDied -= (_) => ResetToBaseGun();
+    }
+
+    private void Awake()
+    {
+
+
+        // Ensure the list exists and is empty
+        if (allGuns == null) allGuns = new List<iGun>();
+        allGuns.Clear();
+
+        var gunComponents = GetComponents<iGun>();
+
+        // adds all guns to the list of all guns
+        foreach (var gun in gunComponents)
+        {
+            allGuns.Add(gun);
+        }
+        
+        iGun enabledGun = null;
+        foreach (var g in gunComponents)
+        {
+            // Check if the gun is enabled and set it as the current gun
+            Behaviour bg = g as Behaviour;
+
+            if (bg.enabled)
+            {
+                Debug.Log("Found enabled gun: " + g.GetType().Name);
+                enabledGun = g;
+                break;
+            }
+        }
+
+        if (enabledGun == null && allGuns.Count > 0)
+            enabledGun = allGuns[0];
+        // Sets the first gun in line to be the enabled gun if no other gun is enabled
+        var behaviour = enabledGun as Behaviour;
+        if (behaviour != null)
+            behaviour.enabled = true; // Ensure the enabled gun is active
+
+        //Debug.Log("Endabled Gun: "+ enabledGun);
+        if (enabledGun != null)
+            SetCurrentGun(enabledGun);
+
+
+    }
+
+    //public void SetCurrentGun(int index)
+    //{
+    //    if (index < 0 || index >= allGuns.Count) return;
+
+    //    SetCurrentGun(allGuns[index]);
+    //}
     public int GetCurrentGunIndex()
     {
         for (int i = 0; i < allGuns.Count; i++)
@@ -35,50 +98,7 @@ public class TrackGuns : MonoBehaviour
         }
         return 0; // Return null if the current gun is not found in the list
     }
-    private void Awake()
-    {
-        // Ensure the list exists and is empty
-        if (allGuns == null) allGuns = new List<Gun>();
-        allGuns.Clear();
-
-        var gunComponents = GetComponents<Gun>();
-
-        // adds all guns to the list of all guns
-        foreach (var gun in gunComponents)
-        {
-            allGuns.Add(gun);
-        }
-        
-        Gun enabledGun = null;
-        foreach (var g in gunComponents)
-        {
-            // Check if the gun is enabled and set it as the current gun
-            if (g.enabled)
-            {
-                Debug.Log("Found enabled gun: " + g.GetType().Name);
-                enabledGun = g;
-                break;
-            }
-        }
-
-        // Sets the first gun in line to be the enabled gun if no other gun is enabled
-        if (enabledGun == null && allGuns.Count > 0)
-            enabledGun = allGuns[0];
-            enabledGun.enabled = true; // Ensure the enabled gun is active
-
-        //Debug.Log("Endabled Gun: "+ enabledGun);
-        if (enabledGun != null)
-            SetCurrentGun(enabledGun);
-    }
-
-    public void SetCurrentGun(int index)
-    {
-        if (index < 0 || index >= allGuns.Count) return;
-
-        SetCurrentGun(allGuns[index]);
-    }
-
-    public void SetCurrentGun(Gun gun)
+    public void SetCurrentGun(iGun gun)
     {
 
         if (gun == null || !allGuns.Contains(gun)) return;
@@ -106,7 +126,7 @@ public class TrackGuns : MonoBehaviour
         {
             StopCoroutine(gunTimerRoutine);
         }
-        gunTimerRoutine = StartCoroutine(StartNewGun(CurrentGun.timerForGun));
+        gunTimerRoutine = StartCoroutine(StartNewGun(CurrentGun.Timer));
 
     }
 
@@ -121,19 +141,40 @@ public class TrackGuns : MonoBehaviour
 
     public void ResetToBaseGun()
     {
-        Gun baseGun = gameObject.GetComponent<BaseGun>();
-        if (baseGun == this)
+        iGun baseGun = gameObject.GetComponent<BaseGun>();
+        Debug.Log("Resetting to base gun: " + baseGun.GetType().Name);
+        if (baseGun == currentGun)
         {
+            Debug.Log("Already using base gun. No action taken.");
             return;
         }
         else
         {
-            this.enabled = false; // Disable the current gun script
-            if (baseGun == null)
-            {
-                gameObject.AddComponent<BaseGun>();
-            }
-            CurrentGun = baseGun;
+            //this.enabled = false; // Disable the current gun script
+            var currentGunMono = currentGun as MonoBehaviour;
+            currentGunMono.enabled = false; // Disable the current gun script
+            //foreach (var gun in allGuns)
+            //{
+            //    var selectedGun = gun as MonoBehaviour;
+            //    var 
+            //    if (selectedGun == currentGun)
+            //    {
+            //        selectedGun.enabled = false; // Disable all gun scripts
+            //    }               
+            //}
+
+            //currentGun = baseGun;
+            PlayerEvents.GunChanged(baseGun);
+            //var currentGunMono2 = currentGun as MonoBehaviour;
+            //if (currentGunMono2.enabled == false)
+            //{
+            //    currentGunMono2.enabled = true; // Enable the base gun script
+            //}
+            ////if (baseGun == null)
+            ////{
+            ////    gameObject.AddComponent<BaseGun>();
+            ////}
+            //CurrentGun = baseGun;
         }
     }
 }

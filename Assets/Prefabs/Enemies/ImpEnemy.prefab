@@ -106,10 +106,10 @@ GameObject:
   - component: {fileID: 7138513798490216762}
   - component: {fileID: 2423617045603023379}
   - component: {fileID: 6451115056582428405}
-  - component: {fileID: 6486139744712487818}
   - component: {fileID: 8754459869354677674}
   - component: {fileID: 8693004484416258104}
   - component: {fileID: 7873244945110895511}
+  - component: {fileID: 3513638749254487949}
   m_Layer: 7
   m_Name: ImpEnemy
   m_TagString: Untagged
@@ -356,21 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5f0fe3989436a43aee5c5a9deb79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::EnemyMovement
---- !u!114 &6486139744712487818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3257115884431478466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f1db8ddcea439a438b7e65915fe778a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: EnemyAssembly::BaseEnemy
-  maxHealth: 4
   speed: 1
-  aiLerp: {fileID: 2423617045603023379}
 --- !u!114 &8754459869354677674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +395,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cc6740b40178943bf33df391e41b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnemyAssembly::EnemyAnimation
+--- !u!114 &3513638749254487949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257115884431478466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fabba7dd70db7840be77c73013b009d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EnemyAssembly::EnemyHealth
+  maxHealth: 4
 --- !u!1 &3489064908445566323
 GameObject:
   m_ObjectHideFlags: 0

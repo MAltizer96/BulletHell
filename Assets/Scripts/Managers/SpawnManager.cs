@@ -36,14 +36,20 @@ public class SpawnManager : MonoBehaviour
     int totalImp;
 
     [Space(10)]
-    [Header ("Timers")]
+    [Header("Timers")]
+    [SerializeField]
+    float baseMaxSpawnTimer;
+
     [SerializeField]
     float maxSpawnTimer;
+    //delete Serialize
     [SerializeField]
     float spawnTimerReduction =0.5f;
     [SerializeField]
     float minSpawnTimer;
 
+    //delete Serialize
+    [SerializeField]
     float spawnTimer = 0f;
 
 
@@ -58,14 +64,18 @@ public class SpawnManager : MonoBehaviour
 
     void OnEnable()
     {
-        Enemy.OnEnemyDied += UpdateEnemies;
-        GameManager.OnPlayerRestarts += PlayerRestarts;
+        EnemyEvents.OnEnemyDied += UpdateEnemies;
+
+        PlayerEvents.OnPlayerDied += PlayerDied;
+        PlayerEvents.OnPlayerRestarts += PlayerRestarts;
     }
 
     void OnDisable()
     {
-        Enemy.OnEnemyDied -= UpdateEnemies;
-        GameManager.OnPlayerRestarts -= PlayerRestarts;
+        EnemyEvents.OnEnemyDied -= UpdateEnemies;
+
+        PlayerEvents.OnPlayerDied -= PlayerDied;
+        PlayerEvents.OnPlayerRestarts -= PlayerRestarts;
     }
 
     private void Awake()
@@ -73,8 +83,8 @@ public class SpawnManager : MonoBehaviour
         maxEnemies = baseMaxEnemies;
         RecalculateEnemyCaps();
         spawnPoints = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
-        //Enemy.OnEnemyDied += UpdateEnemies;
-        //Debug.Log("Number of spawnPoints = " + spawnPoints.Length);
+        maxSpawnTimer = baseMaxSpawnTimer; 
+
     }
 
     private void Update()
@@ -82,15 +92,12 @@ public class SpawnManager : MonoBehaviour
         if (spawnTimer <= 0f && maxEnemies > enemies.Count && SpawnEnemies)
         {
             GameObject enemy = decideEnemy();
-            //Debug.Log("Spawning enemy: " + enemy.name);
-            Debug.Log("Enemy: " +  enemy.name);
+
             SpawnEnemy(enemy);
             spawnTimer = Random.Range(maxSpawnTimer * spawnTimerReduction, maxSpawnTimer);
         }
         else
         {
-            //Debug.Log(maxEnemies <= enemies.Count);
-            //Debug.Log("Total Enemies right now: " + enemies.Count);
             spawnTimer -= Time.deltaTime;
         }
     }
@@ -150,30 +157,37 @@ public class SpawnManager : MonoBehaviour
         // Imps get whatever's left, so the numbers always add up to maxEnemies
         maxImps = maxEnemies - maxSpiders - maxGoblins;
     }
-    void UpdateEnemies(Enemy enemy)
+    void UpdateEnemies(iEnemy enemy)
     {
+
         //Debug.Log("Enemy: "+  enemy.name);
-        if (enemy.name.Contains("Imp"))
+        if (enemy.EnemyType == EnemyType.Imp)
         {
             //Debug.Log("was Imp");
             totalImp -= 1;
         }
-        if (enemy.name.Contains("Goblin"))
+        if (enemy.EnemyType == EnemyType.Goblin)
         {
             totalGoblin -= 1;
         }
-        if(enemy.name.Contains("Spider"))
+        if(enemy.EnemyType == EnemyType.Spider)
         {
             totalSpider -= 1;
         }
-
-        enemies.Remove(enemy.gameObject);
-        Destroy(enemy.gameObject);
+        var enemyBehavior = enemy as MonoBehaviour;
+        enemies.Remove(enemyBehavior.gameObject);
+        Destroy(enemyBehavior.gameObject);
     }
 
+    void PlayerDied(iDamageable damageable)
+    {
+        SpawnEnemies = false;
+    }
     void PlayerRestarts()
     {
         maxEnemies = baseMaxEnemies;
+        maxSpawnTimer = baseMaxSpawnTimer;
+        SpawnEnemies = true;
         RecalculateEnemyCaps();
     }
 }
