@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
     float maxSpawnTimer;
     //delete Serialize
     [SerializeField]
-    float spawnTimerReduction =0.5f;
+    float spawnTimerReduction;
     [SerializeField]
     float minSpawnTimer;
 
@@ -124,7 +124,12 @@ public class SpawnManager : MonoBehaviour
             {
                 return;
             }
-            maxSpawnTimer *= spawnTimerReduction;
+            if (maxSpawnTimer * spawnTimerReduction < minSpawnTimer)
+            {
+                maxSpawnTimer = minSpawnTimer;
+                return;
+            }
+            
         }
     }
 
