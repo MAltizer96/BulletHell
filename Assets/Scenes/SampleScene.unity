@@ -12029,8 +12029,10 @@ MonoBehaviour:
   totalGoblin: 0
   totalImp: 0
   baseMaxSpawnTimer: 5
-  spawnTimerReduction: 0.5
+  maxSpawnTimer: 0
+  spawnTimerReduction: 0.8
   minSpawnTimer: 0
+  spawnTimer: 0.5
 --- !u!1 &1282080745
 GameObject:
   m_ObjectHideFlags: 0
