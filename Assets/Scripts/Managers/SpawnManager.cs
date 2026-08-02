@@ -42,16 +42,10 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     float maxSpawnTimer;
-    //delete Serialize
-    [SerializeField]
     float spawnTimerReduction;
     [SerializeField]
     float minSpawnTimer;
-
-    //delete Serialize
-    [SerializeField]
     float spawnTimer = 0f;
-
 
     int totalSpawnedEnemies = 0;
 
@@ -117,6 +111,7 @@ public class SpawnManager : MonoBehaviour
         int enemiesPerIncrease = 3;
         if (totalSpawnedEnemies % enemiesPerIncrease == 0)
         {
+
             maxEnemies++;
 
             RecalculateEnemyCaps();
@@ -125,9 +120,9 @@ public class SpawnManager : MonoBehaviour
             {
                 return;
             }
-            if (maxSpawnTimer * spawnTimerReduction < minSpawnTimer)
+            if (maxSpawnTimer * spawnTimerReduction > minSpawnTimer)
             {
-                maxSpawnTimer = minSpawnTimer;
+                maxSpawnTimer *= spawnTimerReduction;
                 return;
             }
             
@@ -136,24 +131,28 @@ public class SpawnManager : MonoBehaviour
 
     GameObject decideEnemy()
     {
-        if (totalImp < maxImps)
+         int enemyNumber = Random.Range(0, 3);
+
+        Debug.Log(enemyNumber);
+        if (enemyNumber == 0 && totalImp < maxImps)
         {
             totalImp++;
             return impPrefab;
         }
-        if (totalGoblin < maxGoblins)
+        else if (enemyNumber == 1 && totalGoblin < maxGoblins)
         {
             totalGoblin++;
             return goblinPrefab;
         }
-        if (totalSpider < maxSpiders)
+        else if (enemyNumber == 2 && totalSpider < maxSpiders)
         {
             totalSpider++;
             return spiderPrefab;
         }
-
-
-        return null;
+        else
+        {
+            return decideEnemy();
+        }
     }
 
     void RecalculateEnemyCaps()
