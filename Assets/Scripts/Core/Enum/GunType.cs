@@ -3,7 +3,6 @@ public enum GunType
     Base,
     Pistol,
     SMG,
-    Imp,
-    Goblin
+    Shotgun,
     // add more as you add gun types
 }
